@@ -11,6 +11,7 @@ func GetRoot() *graphql.Object{
 	return graphql.NewObject(graphql.ObjectConfig{
 		Name: "RootQuery",
 		Fields: graphql.Fields{
+			// Publishers
 			"publishers" : &graphql.Field{
 				Type: graphql.NewList(typ.GetPublisherType()),
 				Resolve: res.GetPublishers,
@@ -24,6 +25,8 @@ func GetRoot() *graphql.Object{
 				},
 				Resolve: res.GetPublisher,
 			},
+
+			// Developers
 			"developers" : &graphql.Field{
 				Type: graphql.NewList(typ.GetPublisherType()),
 				Resolve: res.GetDevelopers,
@@ -37,6 +40,8 @@ func GetRoot() *graphql.Object{
 				},
 				Resolve: res.GetDeveloper,
 			},
+
+			// Games
 			"games": &graphql.Field{
 				Type: graphql.NewList(typ.GetGameType()),
 				Resolve: res.GetGames,
@@ -66,6 +71,12 @@ func GetRoot() *graphql.Object{
 			"gameSales": &graphql.Field{
 				Type: graphql.NewList(typ.GetGameSaleType()),
 				Resolve: res.GetGameSales,
+			},
+
+			// User
+			"users": &graphql.Field{
+				Type: graphql.NewList(typ.GetUserType()),
+				Resolve: res.GetUsers,
 			},
 		},
 	})
