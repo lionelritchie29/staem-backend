@@ -25,3 +25,13 @@ func GetFeaturedRecommendedGames(p graphql.ResolveParams) (i interface{}, e erro
 	featuredGames := game.GetFeaturedAndRecommendedGame()
 	return featuredGames, nil
 }
+
+func GetRecentlyPublishedGames(p graphql.ResolveParams) (i interface{}, e error) {
+	recentlyPublishedGames := game.GetRecentlyPublished()
+	return recentlyPublishedGames, nil
+}
+
+func GetSpecialCategoryGames(p graphql.ResolveParams) (i interface{}, e error) {
+	specialGames := game.GetSpecialCategory()
+	return specialGames, nil
+}

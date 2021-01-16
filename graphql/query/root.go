@@ -80,6 +80,14 @@ func GetRoot() *graphql.Object{
 				Type: graphql.NewList(typ.GetGameType()),
 				Resolve: res.GetFeaturedRecommendedGames,
 			},
+			"recentlyPublishedGames": &graphql.Field{
+				Type: graphql.NewList(typ.GetGameType()),
+				Resolve: res.GetRecentlyPublishedGames,
+			},
+			"specialGames": &graphql.Field{
+				Type: graphql.NewList(typ.GetGameType()),
+				Resolve: res.GetSpecialCategoryGames,
+			},
 
 			// User
 			"users": &graphql.Field{

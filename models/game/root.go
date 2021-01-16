@@ -107,3 +107,21 @@ func GetGameOnSale() []models.Game {
 
 	return gamesOnSale
 }
+
+func GetRecentlyPublished() []models.Game {
+	db := database.GetInstance()
+	var games []models.Game
+	//db.Find(&games).Where("TO_DATE(release_date, 'YYYY-MM-DD') >= CURRENT_DATE - INTERVAL '365 day'")
+	db.Raw("SELECT * FROM games WHERE TO_DATE(release_date, 'YYYY-MM-DD') >= CURRENT_DATE - INTERVAL '365 day' ").
+		Scan(&games)
+	return games
+}
+
+func GetSpecialCategory() []models.Game {
+	db := database.GetInstance()
+	var gamesOnSale []models.Game
+
+	db.Model(&models.Game{}).Joins("LEFT JOIN game_sales ON game_sales.game_id = games.id").Where("game_sales.game_id = games.id AND game_sales.discount >= 50").Scan(&gamesOnSale)
+
+	return gamesOnSale
+}
