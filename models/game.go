@@ -76,6 +76,78 @@ func (p *Game) seed(db *gorm.DB) {
 		UpdatedAt:   time.Time{},
 		DeletedAt:   nil,
 	})
+
+	db.Create(&Game{
+		Publisher:   7,
+		Developer:   6,
+		Title:       "Mafia III: Definitive Edition",
+		Description: "After Lincoln Clay's surrogate family, the black mob, is betrayed and killed by the Italian Mafia, Lincoln builds a new family and blazes a path of revenge through the Mafioso responsible.",
+		Price:       345000,
+		ReleaseDate: "2020-05-19",
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&Game{
+		Publisher:   1,
+		Developer:   9,
+		Title:       "Terraria",
+		Description: "Dig, fight, explore, build! Nothing is impossible in this action-packed adventure game. Four Pack also available!",
+		Price:       89999,
+		ReleaseDate: "2011-05-11",
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&Game{
+		Publisher:   4,
+		Developer:   8,
+		Title:       "Kerbal Space Program",
+		Description: "In Kerbal Space Program, take charge of the space program for the alien race known as the Kerbals. You have access to an array of parts to assemble fully-functional spacecraft that flies (or doesn’t) based on realistic aerodynamic and orbital physics.",
+		Price:       269999,
+		ReleaseDate: "2015-04-15",
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&Game{
+		Publisher:   3,
+		Developer:   4,
+		Title:       "Far Cry® 5",
+		Description: "Welcome to Hope County, Montana, home to a fanatical doomsday cult known as Eden’s Gate. Stand up to cult leader Joseph Seed & his siblings, the Heralds, to spark the fires of resistance & liberate the besieged community.",
+		Price:       619000,
+		ReleaseDate: "2018-03-27",
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&Game{
+		Publisher:   10,
+		Developer:   7,
+		Title:       "Stormworks: Build and Rescue",
+		Description: "Join a world where you design, create and pilot your own air sea rescue service. Release your inner hero as you battle fierce storms out at sea to rescue those in need.",
+		Price:       119999,
+		ReleaseDate: "2020-09-27",
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&Game{
+		Publisher:   5,
+		Developer:   8,
+		Title:       "Need for Speed™ Heat",
+		Description: "Hustle by day and risk it all at night in Need for Speed™ Heat Deluxe Edition, a white-knuckle street racer, where the lines of the law fade as the sun starts to set.",
+		Price:       599999,
+		ReleaseDate: "2019-11-08",
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
 }
 
 

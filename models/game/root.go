@@ -77,3 +77,33 @@ func GetImages(gameId int) []models.GameImage {
 	db.Find(&gameImages, "game_id = ?", gameId)
 	return gameImages
 }
+
+func GetFeaturedAndRecommendedGame() []models.Game {
+	db := database.GetInstance()
+	var featuredGames []models.Game
+
+	db.Raw("SELECT " +
+		"ga.id, ga.publisher, ga.developer, ga.title," +
+		"ga.description, ga.price, ga.release_date," +
+		"ga.created_at, ga.updated_at, ga.deleted_at " +
+		"FROM game_playtimes gp JOIN games ga ON gp.game_id = ga.id " +
+		"WHERE TO_DATE(gp.date, 'YYYY-MM-DD') >= CURRENT_DATE - INTERVAL '14 day' " +
+		"GROUP BY " +
+		"ga.id, ga.publisher, ga.developer, ga.title," +
+		"ga.description, ga.price, ga.release_date," +
+		"ga.created_at, ga.updated_at, ga.deleted_at " +
+		"ORDER BY SUM(gp.play_hour) DESC " +
+		"LIMIT 3").
+		Scan(&featuredGames)
+
+	return featuredGames
+}
+
+func GetGameOnSale() []models.Game {
+	db := database.GetInstance()
+	var gamesOnSale []models.Game
+
+	db.Model(&models.Game{}).Joins("LEFT JOIN game_sales ON game_sales.game_id = games.id").Where("game_sales.game_id = games.id").Scan(&gamesOnSale)
+
+	return gamesOnSale
+}

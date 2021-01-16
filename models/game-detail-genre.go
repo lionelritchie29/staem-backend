@@ -127,4 +127,100 @@ func (p *GameDetailGenre) seed(db *gorm.DB) {
 		UpdatedAt:   time.Time{},
 		DeletedAt:   nil,
 	})
+
+	db.Create(&GameDetailGenre{
+		GameID:      5,
+		GameGenreID: 8,
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&GameDetailGenre{
+		GameID:      5,
+		GameGenreID: 7,
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&GameDetailGenre{
+		GameID:      5,
+		GameGenreID: 11,
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&GameDetailGenre{
+		GameID:      6,
+		GameGenreID: 1,
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&GameDetailGenre{
+		GameID:      6,
+		GameGenreID: 7,
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&GameDetailGenre{
+		GameID:      6,
+		GameGenreID: 2,
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&GameDetailGenre{
+		GameID:      6,
+		GameGenreID: 4,
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&GameDetailGenre{
+		GameID:      7,
+		GameGenreID: 3,
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&GameDetailGenre{
+		GameID:      8,
+		GameGenreID: 9,
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&GameDetailGenre{
+		GameID:      9,
+		GameGenreID: 9,
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&GameDetailGenre{
+		GameID:      9,
+		GameGenreID: 3,
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&GameDetailGenre{
+		GameID:      10,
+		GameGenreID: 3,
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
 }

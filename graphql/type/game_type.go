@@ -62,14 +62,6 @@ func GetGameType() *graphql.Object {
 						return tags, nil
 					},
 				},
-				"categories": &graphql.Field{
-					Type: graphql.NewList(GetGameCategoryType()),
-					Resolve: func(params graphql.ResolveParams) (interface{}, error) {
-						gameP := params.Source.(models.Game)
-						categories := game.GetCategories(int(gameP.ID))
-						return categories, nil
-					},
-				},
 				"images": &graphql.Field{
 					Type: graphql.NewList(GetGameImageType()),
 					Resolve: func(params graphql.ResolveParams) (interface{}, error) {

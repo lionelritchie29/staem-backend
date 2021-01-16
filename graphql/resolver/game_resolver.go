@@ -15,3 +15,13 @@ func GetGame(p graphql.ResolveParams) (i interface{}, e error) {
 	game := game.Get(id)
 	return game, nil
 }
+
+func GetSpecialOfferGames(p graphql.ResolveParams) (i interface{}, e error) {
+	gamesOnSale := game.GetGameOnSale()
+	return gamesOnSale, nil
+}
+
+func GetFeaturedRecommendedGames(p graphql.ResolveParams) (i interface{}, e error) {
+	featuredGames := game.GetFeaturedAndRecommendedGame()
+	return featuredGames, nil
+}

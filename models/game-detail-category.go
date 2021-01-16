@@ -63,4 +63,36 @@ func (p *GameDetailCategory) seed(db *gorm.DB) {
 		UpdatedAt:      time.Time{},
 		DeletedAt:      nil,
 	})
+
+	db.Create(&GameDetailCategory{
+		GameID:         7,
+		GameCategoryID: 1,
+		CreatedAt:      time.Time{},
+		UpdatedAt:      time.Time{},
+		DeletedAt:      nil,
+	})
+
+	db.Create(&GameDetailCategory{
+		GameID:         8,
+		GameCategoryID: 2,
+		CreatedAt:      time.Time{},
+		UpdatedAt:      time.Time{},
+		DeletedAt:      nil,
+	})
+
+	db.Create(&GameDetailCategory{
+		GameID:         9,
+		GameCategoryID: 1,
+		CreatedAt:      time.Time{},
+		UpdatedAt:      time.Time{},
+		DeletedAt:      nil,
+	})
+
+	db.Create(&GameDetailCategory{
+		GameID:         10,
+		GameCategoryID: 2,
+		CreatedAt:      time.Time{},
+		UpdatedAt:      time.Time{},
+		DeletedAt:      nil,
+	})
 }

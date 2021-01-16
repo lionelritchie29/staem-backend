@@ -57,5 +57,53 @@ func (p *Publisher) seed(db *gorm.DB) {
 		UpdatedAt:     time.Time{},
 		DeletedAt:     nil,
 	})
+
+	db.Create(&Publisher{
+		//ID: uuid.Must(uuid.NewRandom()).String(),
+		Name: "Foulball Hangover",
+		CreatedAt:     time.Time{},
+		UpdatedAt:     time.Time{},
+		DeletedAt:     nil,
+	})
+
+	db.Create(&Publisher{
+		//ID: uuid.Must(uuid.NewRandom()).String(),
+		Name: "Playded",
+		CreatedAt:     time.Time{},
+		UpdatedAt:     time.Time{},
+		DeletedAt:     nil,
+	})
+
+	db.Create(&Publisher{
+		//ID: uuid.Must(uuid.NewRandom()).String(),
+		Name: "BANDAI NAMCO Entertainment",
+		CreatedAt:     time.Time{},
+		UpdatedAt:     time.Time{},
+		DeletedAt:     nil,
+	})
+
+	db.Create(&Publisher{
+		//ID: uuid.Must(uuid.NewRandom()).String(),
+		Name: "The Irregular Corporation",
+		CreatedAt:     time.Time{},
+		UpdatedAt:     time.Time{},
+		DeletedAt:     nil,
+	})
+
+	db.Create(&Publisher{
+		//ID: uuid.Must(uuid.NewRandom()).String(),
+		Name: "Electronic Arts",
+		CreatedAt:     time.Time{},
+		UpdatedAt:     time.Time{},
+		DeletedAt:     nil,
+	})
+
+	db.Create(&Publisher{
+		//ID: uuid.Must(uuid.NewRandom()).String(),
+		Name: "Sunfire Software",
+		CreatedAt:     time.Time{},
+		UpdatedAt:     time.Time{},
+		DeletedAt:     nil,
+	})
 }
 

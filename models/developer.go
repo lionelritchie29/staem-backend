@@ -64,4 +64,44 @@ func (p *Developer) seed(db *gorm.DB) {
 		UpdatedAt:     time.Time{},
 		DeletedAt:     nil,
 	})
+
+	db.Create(&Developer{
+		//ID: uuid.Must(uuid.NewRandom()).String(),
+		Name: "Activision",
+		CreatedAt:     time.Time{},
+		UpdatedAt:     time.Time{},
+		DeletedAt:     nil,
+	})
+
+	db.Create(&Developer{
+		//ID: uuid.Must(uuid.NewRandom()).String(),
+		Name: "Square Enix",
+		CreatedAt:     time.Time{},
+		UpdatedAt:     time.Time{},
+		DeletedAt:     nil,
+	})
+
+	db.Create(&Developer{
+		//ID: uuid.Must(uuid.NewRandom()).String(),
+		Name: "Re-Logic",
+		CreatedAt:     time.Time{},
+		UpdatedAt:     time.Time{},
+		DeletedAt:     nil,
+	})
+
+	db.Create(&Developer{
+		//ID: uuid.Must(uuid.NewRandom()).String(),
+		Name: "Squad",
+		CreatedAt:     time.Time{},
+		UpdatedAt:     time.Time{},
+		DeletedAt:     nil,
+	})
+
+	db.Create(&Developer{
+		//ID: uuid.Must(uuid.NewRandom()).String(),
+		Name: "Sunfire Software",
+		CreatedAt:     time.Time{},
+		UpdatedAt:     time.Time{},
+		DeletedAt:     nil,
+	})
 }

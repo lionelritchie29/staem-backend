@@ -43,4 +43,40 @@ func (p *GameSale) seed(db *gorm.DB) {
 		DeletedAt: nil,
 	})
 
+	db.Create(&GameSale{
+		GameID:    3,
+		Discount:  35,
+		ValidTo:   time.Now().Format("2006-01-02"),
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameSale{
+		GameID:    5,
+		Discount:  70,
+		ValidTo:   time.Now().Format("2006-01-02"),
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameSale{
+		GameID:    7,
+		Discount:  20,
+		ValidTo:   time.Now().Format("2006-01-02"),
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameSale{
+		GameID:    9,
+		Discount:  45,
+		ValidTo:   time.Now().Format("2006-01-02"),
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
 }
