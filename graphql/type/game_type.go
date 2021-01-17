@@ -70,6 +70,14 @@ func GetGameType() *graphql.Object {
 						return images, nil
 					},
 				},
+				"systemReq": &graphql.Field{
+					Type: graphql.NewList(GetGameSystemReqType()),
+					Resolve: func(params graphql.ResolveParams) (interface{}, error) {
+						gameP := params.Source.(models.Game)
+						systemReq := game.GetSystemRequirements(int(gameP.ID))
+						return systemReq, nil
+					},
+				},
 			},
 		})
 	}

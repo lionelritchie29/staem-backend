@@ -3,6 +3,7 @@ package game
 import (
 	"github.com/lionelritchie29/staem-backend/database"
 	"github.com/lionelritchie29/staem-backend/models"
+	"strconv"
 )
 
 func GetAll() []models.Game{
@@ -11,6 +12,13 @@ func GetAll() []models.Game{
 
 	db.Find(&games)
 
+	return games
+}
+
+func GetByTitle(query string) []models.Game {
+	db := database.GetInstance()
+	var games []models.Game
+	db.Raw("SELECT * FROM games WHERE LOWER(title) LIKE LOWER('%" + query + "%')").Scan(&games)
 	return games
 }
 
@@ -76,6 +84,13 @@ func GetImages(gameId int) []models.GameImage {
 	var gameImages []models.GameImage
 	db.Find(&gameImages, "game_id = ?", gameId)
 	return gameImages
+}
+
+func GetSystemRequirements(gameId int) []models.GameSystemRequirement {
+	db := database.GetInstance()
+	var req []models.GameSystemRequirement
+	db.Raw("SELECT * FROM game_system_requirements WHERE game_id = " + strconv.FormatInt(int64(gameId), 10)).Scan(&req)
+	return req
 }
 
 func GetFeaturedAndRecommendedGame() []models.Game {

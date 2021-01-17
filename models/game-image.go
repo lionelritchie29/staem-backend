@@ -58,6 +58,14 @@ func (p *GameImage) seed(db *gorm.DB) {
 
 	db.Create(&GameImage{
 		GameID:    1,
+		Url:       "5.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameImage{
+		GameID:    1,
 		Url:       "header.jpg",
 		CreatedAt: time.Time{},
 		UpdatedAt: time.Time{},
@@ -91,6 +99,30 @@ func (p *GameImage) seed(db *gorm.DB) {
 	db.Create(&GameImage{
 		GameID:    2,
 		Url:       "4.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameImage{
+		GameID:    2,
+		Url:       "5.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameImage{
+		GameID:    2,
+		Url:       "6.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameImage{
+		GameID:    2,
+		Url:       "7.jpg",
 		CreatedAt: time.Time{},
 		UpdatedAt: time.Time{},
 		DeletedAt: nil,

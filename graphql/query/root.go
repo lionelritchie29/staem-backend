@@ -46,6 +46,15 @@ func GetRoot() *graphql.Object{
 				Type: graphql.NewList(typ.GetGameType()),
 				Resolve: res.GetGames,
 			},
+			"gamesByTitle": &graphql.Field{
+				Type: graphql.NewList(typ.GetGameType()),
+				Args: graphql.FieldConfigArgument{
+					"query": &graphql.ArgumentConfig{
+						Type: graphql.String,
+					},
+				},
+				Resolve: res.GetGamesByTitle,
+			},
 			"game": &graphql.Field{
 				Type: typ.GetGameType(),
 				Args: graphql.FieldConfigArgument{
@@ -87,6 +96,17 @@ func GetRoot() *graphql.Object{
 			"specialGames": &graphql.Field{
 				Type: graphql.NewList(typ.GetGameType()),
 				Resolve: res.GetSpecialCategoryGames,
+			},
+
+			//Game Review
+			"gameReviewById": &graphql.Field{
+				Type: graphql.NewList(typ.GetGameReviewType()),
+				Args: graphql.FieldConfigArgument{
+					"gameId" : &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.GetGameReviewByGameId,
 			},
 
 			// User
