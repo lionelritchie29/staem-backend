@@ -114,6 +114,17 @@ func GetFeaturedAndRecommendedGame() []models.Game {
 	return featuredGames
 }
 
+func GetCommunityRecommends() []models.Game {
+	db := database.GetInstance()
+	var communityRecommendedGames []models.Game
+	db.Raw("SELECT * FROM games WHERE id IN (" +
+		   		"SELECT game_id FROM game_reviews " +
+				"GROUP BY game_id ORDER BY SUM(upvote_count) " +
+				"DESC LIMIT 4" +
+		")").Scan(&communityRecommendedGames)
+	return communityRecommendedGames
+}
+
 func GetGameOnSale() []models.Game {
 	db := database.GetInstance()
 	var gamesOnSale []models.Game

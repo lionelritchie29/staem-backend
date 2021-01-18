@@ -32,6 +32,11 @@ func GetFeaturedRecommendedGames(p graphql.ResolveParams) (i interface{}, e erro
 	return featuredGames, nil
 }
 
+func GetCommunityRecommendedGames(p graphql.ResolveParams) (i interface{}, e error) {
+	commRecommendedGames := game.GetCommunityRecommends()
+	return commRecommendedGames, nil
+}
+
 func GetTopSellerGames(p graphql.ResolveParams) (i interface{}, e error) {
 	topSellerGames := game.GetTopSellers()
 	return topSellerGames, nil
