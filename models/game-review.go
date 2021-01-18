@@ -36,8 +36,8 @@ func init() {
 
 func (p *GameReview) seed(db *gorm.DB) {
 
-	for i := 0; i < 40; i++ {
-		startDate := time.Date(2020, time.August, 17, 12, 0, 0, 0, time.UTC)
+	for i := 0; i < 100; i++ {
+		startDate := time.Date(2020, time.December, 17, 12, 0, 0, 0, time.UTC)
 		booleanRandom :=  rand.Intn(10) + 1
 		var isRecommended bool
 
@@ -52,7 +52,7 @@ func (p *GameReview) seed(db *gorm.DB) {
 			GameID:         uint( rand.Intn(10) + 1 ),
 			UserID:         uint( rand.Intn(10) + 1 ),
 			Title:          faker.Lorem().Sentence(rand.Intn(3) + 1),
-			Content:        faker.Lorem().Paragraph(rand.Intn(25) + 3),
+			Content:        faker.Lorem().Paragraph(rand.Intn(10) + 3),
 			UpvoteCount:    rand.Intn(100 + 1 ),
 			DownvoteCount:  rand.Intn(100+ 1 ),
 			ReviewDateTime: faker.Time().Between(startDate, time.Now()),

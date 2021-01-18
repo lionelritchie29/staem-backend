@@ -123,6 +123,18 @@ func GetGameOnSale() []models.Game {
 	return gamesOnSale
 }
 
+func GetTopSellers() []models.Game {
+	db := database.GetInstance()
+	var topSellerGames []models.Game
+	db.Raw("SELECT * FROM games WHERE id IN (" +
+		   		"SELECT game FROM game_transaction_details d " +
+		   		"JOIN game_transaction_headers h ON d.game_transaction_id = h.id " +
+		   		"WHERE h.transaction_date::date >= CURRENT_DATE - INTERVAL '7 day' " +
+		   		"GROUP BY game ORDER BY SUM(quantity) DESC" +
+			")").Scan(&topSellerGames)
+	return topSellerGames
+}
+
 func GetRecentlyPublished() []models.Game {
 	db := database.GetInstance()
 	var games []models.Game

@@ -15,6 +15,7 @@ type UserAccount struct {
 	WalletAmount int
 	Role         int //foreign key to Role
 	SuspendedAt  time.Time
+	Status string
 	CreatedAt    time.Time
 	UpdatedAt    time.Time
 	DeletedAt    *time.Time `gorm:"index"`
@@ -39,6 +40,7 @@ func (p *UserAccount) seed(db *gorm.DB) {
 		WalletAmount: 999999,
 		Role:         5, //admin-master, can do anything
 		SuspendedAt:  time.Time{},
+		Status: "offline",
 		CreatedAt:    time.Time{},
 		UpdatedAt:    time.Time{},
 		DeletedAt:    nil,
@@ -52,6 +54,7 @@ func (p *UserAccount) seed(db *gorm.DB) {
 		WalletAmount: 123456,
 		Role:         1, //user-default, basic user
 		SuspendedAt:  time.Time{},
+		Status: "offline",
 		CreatedAt:    time.Time{},
 		UpdatedAt:    time.Time{},
 		DeletedAt:    nil,
@@ -65,6 +68,7 @@ func (p *UserAccount) seed(db *gorm.DB) {
 		WalletAmount: 321000,
 		Role:         1, //user-default, basic user
 		SuspendedAt:  time.Time{},
+		Status: "offline",
 		CreatedAt:    time.Time{},
 		UpdatedAt:    time.Time{},
 		DeletedAt:    nil,
@@ -78,6 +82,7 @@ func (p *UserAccount) seed(db *gorm.DB) {
 		WalletAmount: 555000,
 		Role:         1, //user-default, basic user
 		SuspendedAt:  time.Time{},
+		Status: "offline",
 		CreatedAt:    time.Time{},
 		UpdatedAt:    time.Time{},
 		DeletedAt:    nil,
@@ -91,6 +96,7 @@ func (p *UserAccount) seed(db *gorm.DB) {
 		WalletAmount: 777777,
 		Role:         1, //user-default, basic user
 		SuspendedAt:  time.Time{},
+		Status: "offline",
 		CreatedAt:    time.Time{},
 		UpdatedAt:    time.Time{},
 		DeletedAt:    nil,
@@ -104,6 +110,7 @@ func (p *UserAccount) seed(db *gorm.DB) {
 		WalletAmount: 888888,
 		Role:         1, //user-default, basic user
 		SuspendedAt:  time.Time{},
+		Status: "offline",
 		CreatedAt:    time.Time{},
 		UpdatedAt:    time.Time{},
 		DeletedAt:    nil,
@@ -117,6 +124,7 @@ func (p *UserAccount) seed(db *gorm.DB) {
 		WalletAmount: 888888,
 		Role:         1, //user-default, basic user
 		SuspendedAt:  time.Time{},
+		Status: "offline",
 		CreatedAt:    time.Time{},
 		UpdatedAt:    time.Time{},
 		DeletedAt:    nil,
@@ -130,6 +138,7 @@ func (p *UserAccount) seed(db *gorm.DB) {
 		WalletAmount: 888888,
 		Role:         1, //user-default, basic user
 		SuspendedAt:  time.Time{},
+		Status: "offline",
 		CreatedAt:    time.Time{},
 		UpdatedAt:    time.Time{},
 		DeletedAt:    nil,
@@ -143,6 +152,7 @@ func (p *UserAccount) seed(db *gorm.DB) {
 		WalletAmount: 134679,
 		Role:         1, //user-default, basic user
 		SuspendedAt:  time.Time{},
+		Status: "offline",
 		CreatedAt:    time.Time{},
 		UpdatedAt:    time.Time{},
 		DeletedAt:    nil,
@@ -156,6 +166,7 @@ func (p *UserAccount) seed(db *gorm.DB) {
 		WalletAmount: 159789,
 		Role:         1, //user-default, basic user
 		SuspendedAt:  time.Time{},
+		Status: "offline",
 		CreatedAt:    time.Time{},
 		UpdatedAt:    time.Time{},
 		DeletedAt:    nil,

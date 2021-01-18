@@ -12,6 +12,13 @@ func GetAll() []models.UserAccount{
 	return users
 }
 
+func Get(userId int) models.UserAccount {
+	db := database.GetInstance()
+	var user models.UserAccount
+	db.Find(&user, userId)
+	return user
+}
+
 func GetRole(roleId int) models.UserRole {
 	db := database.GetInstance()
 	var role models.UserRole

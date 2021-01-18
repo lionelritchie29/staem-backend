@@ -1,6 +1,10 @@
 package _type
 
-import "github.com/graphql-go/graphql"
+import (
+	"github.com/graphql-go/graphql"
+	"github.com/lionelritchie29/staem-backend/models"
+	"github.com/lionelritchie29/staem-backend/models/user"
+)
 
 var gameReview *graphql.Object
 
@@ -18,8 +22,13 @@ func GetGameReviewType() *graphql.Object {
 				"gameId": &graphql.Field{
 					Type: graphql.Int,
 				},
-				"userId": &graphql.Field{
-					Type: graphql.Int,
+				"user": &graphql.Field{
+					Type: GetUserType(),
+					Resolve: func(params graphql.ResolveParams) (interface{}, error) {
+						gameP := params.Source.(models.GameReview)
+						user := user.Get(int(gameP.UserID))
+						return user, nil
+					},
 				},
 				"title": &graphql.Field{
 					Type: graphql.String,

@@ -89,6 +89,10 @@ func GetRoot() *graphql.Object{
 				Type: graphql.NewList(typ.GetGameType()),
 				Resolve: res.GetFeaturedRecommendedGames,
 			},
+			"topSellerGames": &graphql.Field{
+				Type: graphql.NewList(typ.GetGameType()),
+				Resolve: res.GetTopSellerGames,
+			},
 			"recentlyPublishedGames": &graphql.Field{
 				Type: graphql.NewList(typ.GetGameType()),
 				Resolve: res.GetRecentlyPublishedGames,
@@ -107,6 +111,30 @@ func GetRoot() *graphql.Object{
 					},
 				},
 				Resolve: res.GetGameReviewByGameId,
+			},
+			"mostHelpfulReviewByGameId": &graphql.Field{
+				Type: graphql.NewList(typ.GetGameReviewType()),
+				Args: graphql.FieldConfigArgument{
+					"gameId" : &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.GetPastMonthGameReviewById,
+			},
+			"recentlyPostedReviewByGameId": &graphql.Field{
+				Type: graphql.NewList(typ.GetGameReviewType()),
+				Args: graphql.FieldConfigArgument{
+					"gameId" : &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.GetRecentlyPostedReviewById,
+			},
+
+			// Transactions
+			"gameTransactions": &graphql.Field{
+				Type: graphql.NewList(typ.GetGameTransactionType()),
+				Resolve: res.GetGameTransactions,
 			},
 
 			// User

@@ -28,6 +28,9 @@ func GetUserType() *graphql.Object{
 				"suspended": &graphql.Field{
 					Type: graphql.DateTime,
 				},
+				"status": &graphql.Field{
+					Type: graphql.String,
+				},
 				"role": &graphql.Field{
 					Type: GetRoleType(),
 					Resolve: func(params graphql.ResolveParams) (interface{}, error) {
