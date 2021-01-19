@@ -9,3 +9,9 @@ func GetUsers(p graphql.ResolveParams) (i interface{}, e error){
 	users := user.GetAll()
 	return users, nil
 }
+
+func GetUser(p graphql.ResolveParams) (i interface{}, e error){
+	id := p.Args["id"].(int)
+	user := user.Get(id)
+	return user, nil
+}

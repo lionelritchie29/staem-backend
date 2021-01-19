@@ -19,6 +19,13 @@ func Get(userId int) models.UserAccount {
 	return user
 }
 
+func GetByAccountName(accountName string) models.UserAccount {
+	db := database.GetInstance()
+	var user models.UserAccount
+	db.Where("account_name = ?", accountName).First(&user)
+	return user
+}
+
 func GetRole(roleId int) models.UserRole {
 	db := database.GetInstance()
 	var role models.UserRole

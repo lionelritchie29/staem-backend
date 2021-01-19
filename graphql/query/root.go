@@ -146,6 +146,29 @@ func GetRoot() *graphql.Object{
 				Type: graphql.NewList(typ.GetUserType()),
 				Resolve: res.GetUsers,
 			},
+			"user": &graphql.Field{
+				Type: typ.GetUserType(),
+				Args: graphql.FieldConfigArgument{
+					"id": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.GetUser,
+			},
+
+			// Auth
+			"login": &graphql.Field{
+				Type: graphql.String,
+				Args: graphql.FieldConfigArgument{
+					"accountName": &graphql.ArgumentConfig{
+						Type: graphql.String,
+					},
+					"password": &graphql.ArgumentConfig{
+						Type: graphql.String,
+					},
+				},
+				Resolve: res.LoginResolver,
+			},
 		},
 	})
 }

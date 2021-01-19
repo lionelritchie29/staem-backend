@@ -97,19 +97,11 @@ func GetFeaturedAndRecommendedGame() []models.Game {
 	db := database.GetInstance()
 	var featuredGames []models.Game
 
-	db.Raw("SELECT " +
-		"ga.id, ga.publisher, ga.developer, ga.title," +
-		"ga.description, ga.price, ga.release_date," +
-		"ga.created_at, ga.updated_at, ga.deleted_at " +
-		"FROM game_playtimes gp JOIN games ga ON gp.game_id = ga.id " +
-		"WHERE TO_DATE(gp.date, 'YYYY-MM-DD') >= CURRENT_DATE - INTERVAL '14 day' " +
-		"GROUP BY " +
-		"ga.id, ga.publisher, ga.developer, ga.title," +
-		"ga.description, ga.price, ga.release_date," +
-		"ga.created_at, ga.updated_at, ga.deleted_at " +
-		"ORDER BY SUM(gp.play_hour) DESC " +
-		"LIMIT 3").
-		Scan(&featuredGames)
+	db.Raw("SELECT * FROM games WHERE id IN (" +
+				"SELECT game_id FROM game_playtimes " +
+				"WHERE TO_DATE(date, 'YYYY-MM-DD') >= CURRENT_DATE - INTERVAL '14 day' " +
+				"GROUP BY game_id" +
+			")").Scan(&featuredGames)
 
 	return featuredGames
 }
@@ -120,7 +112,7 @@ func GetCommunityRecommends() []models.Game {
 	db.Raw("SELECT * FROM games WHERE id IN (" +
 		   		"SELECT game_id FROM game_reviews " +
 				"GROUP BY game_id ORDER BY SUM(upvote_count) " +
-				"DESC LIMIT 4" +
+				"DESC LIMIT 5" +
 		")").Scan(&communityRecommendedGames)
 	return communityRecommendedGames
 }
