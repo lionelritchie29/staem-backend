@@ -11,6 +11,7 @@ type GameTransactionDetail struct {
 	ID uint `gorm:"primary_key"`
 	GameTransactionID uint
 	Game int
+	Price int
 	Quantity int
 	CreatedAt time.Time
 	UpdatedAt time.Time
@@ -31,6 +32,7 @@ func (p *GameTransactionDetail) seed(db *gorm.DB) {
 		db.Create(&GameTransactionDetail{
 			GameTransactionID: uint(rand.Intn(100) + 1),
 			Game:    rand.Intn(10) + 1,
+			Price: rand.Intn(1099999) + 169999,
 			Quantity:  rand.Intn(20) + 1,
 			CreatedAt: time.Time{},
 			UpdatedAt: time.Time{},

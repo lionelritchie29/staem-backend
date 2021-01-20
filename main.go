@@ -4,6 +4,7 @@ import (
 	"github.com/graphql-go/graphql"
 	"github.com/graphql-go/handler"
 	"github.com/lionelritchie29/staem-backend/api"
+	"github.com/lionelritchie29/staem-backend/graphql/mutation"
 	"github.com/lionelritchie29/staem-backend/graphql/query"
 	"github.com/lionelritchie29/staem-backend/middleware"
 	"log"
@@ -13,7 +14,7 @@ import (
 func main(){
 	schema, err := graphql.NewSchema(graphql.SchemaConfig{
 		Query: query.GetRoot(),
-
+		Mutation: mutation.GetRoot(),
 	})
 
 	if err != nil{

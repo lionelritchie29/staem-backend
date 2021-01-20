@@ -1,8 +1,11 @@
 package game_transaction
 
 import (
+	"fmt"
 	"github.com/lionelritchie29/staem-backend/database"
+	"github.com/lionelritchie29/staem-backend/input_models"
 	"github.com/lionelritchie29/staem-backend/models"
+	"time"
 )
 
 func GetAll() []models.GameTransactionHeader {
@@ -24,4 +27,50 @@ func GetPaymentMethodById(paymentId int) models.PaymentMethod {
 	var paymentMethod models.PaymentMethod
 	db.Find(&paymentMethod, paymentId)
 	return paymentMethod
+}
+
+func AddTransaction(newTransaction input_models.NewGameTransaction) bool {
+	db := database.GetInstance()
+
+	header := &models.GameTransactionHeader{
+		PaymentMethod:   newTransaction.PaymentMethod,
+		User:            newTransaction.User,
+		CardNo:          newTransaction.CardNo,
+		CardExp:         newTransaction.CardExp,
+		BillingAddress:  newTransaction.BillingAddress,
+		BillingCity:     newTransaction.BillingCity,
+		PostalCode:      newTransaction.PostalCode,
+		PhoneNumber:     newTransaction.PhoneNumber,
+		Country:         newTransaction.Country,
+		TransactionDate: time.Now(),
+		CreatedAt:       time.Time{},
+		UpdatedAt:       time.Time{},
+		DeletedAt:       nil,
+	}
+
+	resHeader := db.Create(header)
+
+	if resHeader.Error != nil {
+		panic(resHeader.Error)
+		return false
+	}
+
+	for _, detail := range newTransaction.Details {
+		resDetail := db.Create(&models.GameTransactionDetail{
+			GameTransactionID: header.ID,
+			Game:              detail.Game,
+			Price: 			   detail.Price,
+			Quantity:          detail.Quantity,
+			CreatedAt:         time.Time{},
+			UpdatedAt:         time.Time{},
+			DeletedAt:         nil,
+		})
+
+		if resDetail.Error != nil {
+			fmt.Println(resDetail.Error)
+			return false
+		}
+	}
+
+	return true
 }
