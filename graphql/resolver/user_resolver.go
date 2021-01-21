@@ -19,6 +19,18 @@ func GetUser(p graphql.ResolveParams) (i interface{}, e error){
 	return user, nil
 }
 
+func GetFriends(p graphql.ResolveParams) (i interface{}, e error){
+	id := p.Args["id"].(int)
+	friends := user.GetFriends(id)
+	return friends, nil
+}
+
+func GetUserByAccountName(p graphql.ResolveParams) (i interface{}, e error){
+	customUrl := p.Args["url"].(string)
+	user := user.GetByCustomUrl(customUrl)
+	return user, nil
+}
+
 func CreateUser(p graphql.ResolveParams) (i interface{}, e error){
 	newUserRaw := p.Args["newUser"]
 	var newUser input_models.NewUserAccount

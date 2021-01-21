@@ -15,7 +15,7 @@ type UserAccount struct {
 	WalletAmount int
 	Role         int //foreign key to Role
 	SuspendedAt  time.Time
-	Status string
+	Status		 string
 	CreatedAt    time.Time
 	UpdatedAt    time.Time
 	DeletedAt    *time.Time `gorm:"index"`

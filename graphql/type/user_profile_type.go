@@ -33,6 +33,9 @@ func GetUserProfileType() *graphql.Object {
 				"miniProfileBackgroundUrl": &graphql.Field{
 					Type: graphql.String,
 				},
+				"summary": &graphql.Field{
+					Type: graphql.String,
+				},
 				"theme": &graphql.Field{
 					Type: graphql.String,
 				},

@@ -5,6 +5,7 @@ import (
 	"github.com/lionelritchie29/staem-backend/helpers"
 	"github.com/lionelritchie29/staem-backend/input_models"
 	"github.com/lionelritchie29/staem-backend/models"
+	"strconv"
 	"time"
 )
 
@@ -29,6 +30,17 @@ func GetByAccountName(accountName string) models.UserAccount {
 	return user
 }
 
+func GetByCustomUrl(customUrl string) models.UserAccount {
+	db := database.GetInstance()
+	var profile models.UserProfile
+	var user models.UserAccount
+
+	db.Where("custom_url = ?", customUrl).First(&profile)
+	db.First(&user, profile.ID)
+
+	return user
+}
+
 func GetRole(roleId int) models.UserRole {
 	db := database.GetInstance()
 	var role models.UserRole
@@ -41,6 +53,15 @@ func GetProfile(userId int) models.UserProfile {
 	var profile models.UserProfile
 	db.Find(&profile, userId)
 	return profile
+}
+
+func GetFriends(userId int) []models.UserAccount {
+	db := database.GetInstance()
+	var friends []models.UserAccount
+	db.Raw("SELECT * FROM user_accounts WHERE id IN (" +
+				"SELECT friend_id FROM friends WHERE user_id = " + strconv.FormatInt(int64(userId), 10) +
+			") ").Scan(&friends)
+	return friends
 }
 
 func Create(newUser input_models.NewUserAccount) bool {
