@@ -6,12 +6,15 @@ import (
 	"github.com/lionelritchie29/staem-backend/api"
 	"github.com/lionelritchie29/staem-backend/graphql/mutation"
 	"github.com/lionelritchie29/staem-backend/graphql/query"
+	"github.com/lionelritchie29/staem-backend/helpers"
 	"github.com/lionelritchie29/staem-backend/middleware"
 	"log"
 	"net/http"
+	"os"
 )
 
 func main(){
+	helpers.SetEnv()
 	schema, err := graphql.NewSchema(graphql.SchemaConfig{
 		Query: query.GetRoot(),
 		Mutation: mutation.GetRoot(),
@@ -34,7 +37,7 @@ func main(){
 
 	// Choose the folder to serve
 	staticDir := "/images/"
-	path := "C:/DATA/Golang/src/github.com/lionelritchie29/staem-backend/images"
+	path := os.Getenv("IMAGE_PATH")
 
 	// Create the route
 	router.
@@ -45,5 +48,4 @@ func main(){
 
 	log.Fatalln(http.ListenAndServe(":2000", router))
 }
-
 

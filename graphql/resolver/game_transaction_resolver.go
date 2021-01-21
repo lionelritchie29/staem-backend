@@ -2,6 +2,7 @@ package resolver
 
 import (
 	"github.com/graphql-go/graphql"
+	"github.com/lionelritchie29/staem-backend/helpers"
 	"github.com/lionelritchie29/staem-backend/input_models"
 	"github.com/lionelritchie29/staem-backend/models/game_transaction"
 	"github.com/mitchellh/mapstructure"
@@ -21,5 +22,6 @@ func AddTransaction(p graphql.ResolveParams) (interface{}, error) {
 		return false, nil
 	}
 
+	helpers.SendEmail("Lionel", "brandon.julio.t@icloud.com", "test123123")
 	return true, nil
 }
