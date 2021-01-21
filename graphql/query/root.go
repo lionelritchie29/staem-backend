@@ -173,6 +173,24 @@ func GetRoot() *graphql.Object{
 				},
 				Resolve: res.GetFriends,
 			},
+			"gamesByUserId": &graphql.Field{
+				Type: graphql.NewList(typ.GetGameType()),
+				Args: graphql.FieldConfigArgument{
+					"id": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.GetUserGames,
+			},
+			"commentsByUserId": &graphql.Field{
+				Type: graphql.NewList(typ.GetUserCommentType()),
+				Args: graphql.FieldConfigArgument{
+					"id": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.GetUserComments,
+			},
 
 			// Auth
 			"login": &graphql.Field{

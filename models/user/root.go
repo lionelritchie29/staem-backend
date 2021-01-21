@@ -64,6 +64,24 @@ func GetFriends(userId int) []models.UserAccount {
 	return friends
 }
 
+func GetGames(userId int) []models.Game {
+	db := database.GetInstance()
+	var games []models.Game
+
+	db.Raw("SELECT * FROM games WHERE id IN ( " +
+				"SELECT game_id FROM user_games WHERE user_id = " + strconv.FormatInt(int64(userId), 10) +
+		")").Scan(&games)
+
+	return games
+}
+
+func GetComments(userId int) []models.UserComment {
+	db := database.GetInstance()
+	var comments []models.UserComment
+	db.Where("dest_user_id = ?", userId).Find(&comments)
+	return comments
+}
+
 func Create(newUser input_models.NewUserAccount) bool {
 	db := database.GetInstance()
 

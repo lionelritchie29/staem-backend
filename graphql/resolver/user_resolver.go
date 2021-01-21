@@ -25,6 +25,18 @@ func GetFriends(p graphql.ResolveParams) (i interface{}, e error){
 	return friends, nil
 }
 
+func GetUserComments(p graphql.ResolveParams) (i interface{}, e error){
+	id := p.Args["id"].(int)
+	comments := user.GetComments(id)
+	return comments, nil
+}
+
+func GetUserGames(p graphql.ResolveParams) (i interface{}, e error){
+	id := p.Args["id"].(int)
+	games := user.GetGames(id)
+	return games, nil
+}
+
 func GetUserByAccountName(p graphql.ResolveParams) (i interface{}, e error){
 	customUrl := p.Args["url"].(string)
 	user := user.GetByCustomUrl(customUrl)
