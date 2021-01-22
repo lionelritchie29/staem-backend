@@ -7,8 +7,8 @@ import (
 )
 
 type ReceivedFriendRequest struct{
-	UserID uint `gorm:"primaryKey"`
-	FriendID uint `gorm:"primaryKey"`
+	UserID uint `gorm:"primary_key"`
+	FriendID uint `gorm:"primary_key"`
 	Status string
 	CreatedAt time.Time
 	UpdatedAt time.Time
@@ -73,6 +73,15 @@ func (p *ReceivedFriendRequest) seed(db *gorm.DB) {
 	db.Create(&ReceivedFriendRequest{
 		UserID:    4,
 		FriendID:  8,
+		Status:    "pending",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&ReceivedFriendRequest{
+		UserID:    2,
+		FriendID:  1,
 		Status:    "pending",
 		CreatedAt: time.Time{},
 		UpdatedAt: time.Time{},

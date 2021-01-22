@@ -7,8 +7,8 @@ import (
 )
 
 type SentFriendRequest struct{
-	UserID uint `gorm:"primaryKey"`
-	FriendID uint `gorm:"primaryKey"`
+	UserID uint `gorm:"primary_key"`
+	FriendID uint `gorm:"primary_key"`
 	Status string
 	CreatedAt time.Time
 	UpdatedAt time.Time
@@ -25,7 +25,7 @@ func init() {
 }
 
 func (p *SentFriendRequest) seed(db *gorm.DB) {
-	db.Create(&ReceivedFriendRequest{
+	db.Create(&SentFriendRequest{
 		UserID:    5,
 		FriendID:  1,
 		Status:    "pending",
@@ -34,7 +34,7 @@ func (p *SentFriendRequest) seed(db *gorm.DB) {
 		DeletedAt: nil,
 	})
 
-	db.Create(&ReceivedFriendRequest{
+	db.Create(&SentFriendRequest{
 		UserID:    7,
 		FriendID:  1,
 		Status:    "pending",
@@ -43,7 +43,7 @@ func (p *SentFriendRequest) seed(db *gorm.DB) {
 		DeletedAt: nil,
 	})
 
-	db.Create(&ReceivedFriendRequest{
+	db.Create(&SentFriendRequest{
 		UserID:    5,
 		FriendID:  2,
 		Status:    "pending",
@@ -52,7 +52,7 @@ func (p *SentFriendRequest) seed(db *gorm.DB) {
 		DeletedAt: nil,
 	})
 
-	db.Create(&ReceivedFriendRequest{
+	db.Create(&SentFriendRequest{
 		UserID:    9,
 		FriendID:  3,
 		Status:    "pending",
@@ -61,7 +61,7 @@ func (p *SentFriendRequest) seed(db *gorm.DB) {
 		DeletedAt: nil,
 	})
 
-	db.Create(&ReceivedFriendRequest{
+	db.Create(&SentFriendRequest{
 		UserID:    7,
 		FriendID:  4,
 		Status:    "pending",
@@ -70,9 +70,18 @@ func (p *SentFriendRequest) seed(db *gorm.DB) {
 		DeletedAt: nil,
 	})
 
-	db.Create(&ReceivedFriendRequest{
+	db.Create(&SentFriendRequest{
 		UserID:    8,
 		FriendID:  4,
+		Status:    "pending",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&SentFriendRequest{
+		UserID:    1,
+		FriendID:  2,
 		Status:    "pending",
 		CreatedAt: time.Time{},
 		UpdatedAt: time.Time{},

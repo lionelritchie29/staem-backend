@@ -23,6 +23,14 @@ func Get(userId int) models.UserAccount {
 	return user
 }
 
+func GetByCode(code string) models.UserAccount {
+	db := database.GetInstance()
+	var user models.UserAccount
+	db.Where("code = ?", code).Find(&user)
+
+	return user
+}
+
 func GetByAccountName(accountName string, isLogin bool) models.UserAccount {
 	db := database.GetInstance()
 	var user models.UserAccount

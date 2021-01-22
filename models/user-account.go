@@ -4,6 +4,7 @@ import (
 	"github.com/jinzhu/gorm"
 	"github.com/lionelritchie29/staem-backend/database"
 	"github.com/lionelritchie29/staem-backend/helpers"
+	"syreclabs.com/go/faker"
 	"time"
 )
 
@@ -16,6 +17,7 @@ type UserAccount struct {
 	Role         int //foreign key to Role
 	SuspendedAt  time.Time
 	Status		 string
+	Code		 string
 	CreatedAt    time.Time
 	UpdatedAt    time.Time
 	DeletedAt    *time.Time `gorm:"index"`
@@ -41,6 +43,7 @@ func (p *UserAccount) seed(db *gorm.DB) {
 		Role:         5, //admin-master, can do anything
 		SuspendedAt:  time.Time{},
 		Status: "offline",
+		Code: faker.Number().Number(9),
 		CreatedAt:    time.Time{},
 		UpdatedAt:    time.Time{},
 		DeletedAt:    nil,
@@ -52,6 +55,7 @@ func (p *UserAccount) seed(db *gorm.DB) {
 		Email:        "cindy.mirgiriti@yahoo.com",
 		Password:     pass2,
 		WalletAmount: 123456,
+		Code: faker.Number().Number(9),
 		Role:         1, //user-default, basic user
 		SuspendedAt:  time.Time{},
 		Status: "offline",
@@ -69,6 +73,7 @@ func (p *UserAccount) seed(db *gorm.DB) {
 		Role:         1, //user-default, basic user
 		SuspendedAt:  time.Time{},
 		Status: "offline",
+		Code: faker.Number().Number(9),
 		CreatedAt:    time.Time{},
 		UpdatedAt:    time.Time{},
 		DeletedAt:    nil,
@@ -83,6 +88,7 @@ func (p *UserAccount) seed(db *gorm.DB) {
 		Role:         1, //user-default, basic user
 		SuspendedAt:  time.Time{},
 		Status: "offline",
+		Code: faker.Number().Number(9),
 		CreatedAt:    time.Time{},
 		UpdatedAt:    time.Time{},
 		DeletedAt:    nil,
@@ -97,6 +103,7 @@ func (p *UserAccount) seed(db *gorm.DB) {
 		Role:         1, //user-default, basic user
 		SuspendedAt:  time.Time{},
 		Status: "offline",
+		Code: faker.Number().Number(9),
 		CreatedAt:    time.Time{},
 		UpdatedAt:    time.Time{},
 		DeletedAt:    nil,
@@ -111,6 +118,7 @@ func (p *UserAccount) seed(db *gorm.DB) {
 		Role:         1, //user-default, basic user
 		SuspendedAt:  time.Time{},
 		Status: "offline",
+		Code: faker.Number().Number(9),
 		CreatedAt:    time.Time{},
 		UpdatedAt:    time.Time{},
 		DeletedAt:    nil,
@@ -125,6 +133,7 @@ func (p *UserAccount) seed(db *gorm.DB) {
 		Role:         1, //user-default, basic user
 		SuspendedAt:  time.Time{},
 		Status: "offline",
+		Code: faker.Number().Number(9),
 		CreatedAt:    time.Time{},
 		UpdatedAt:    time.Time{},
 		DeletedAt:    nil,
@@ -139,6 +148,7 @@ func (p *UserAccount) seed(db *gorm.DB) {
 		Role:         1, //user-default, basic user
 		SuspendedAt:  time.Time{},
 		Status: "offline",
+		Code: faker.Number().Number(9),
 		CreatedAt:    time.Time{},
 		UpdatedAt:    time.Time{},
 		DeletedAt:    nil,
@@ -153,6 +163,7 @@ func (p *UserAccount) seed(db *gorm.DB) {
 		Role:         1, //user-default, basic user
 		SuspendedAt:  time.Time{},
 		Status: "offline",
+		Code: faker.Number().Number(9),
 		CreatedAt:    time.Time{},
 		UpdatedAt:    time.Time{},
 		DeletedAt:    nil,
@@ -167,6 +178,7 @@ func (p *UserAccount) seed(db *gorm.DB) {
 		Role:         1, //user-default, basic user
 		SuspendedAt:  time.Time{},
 		Status: "offline",
+		Code: faker.Number().Number(9),
 		CreatedAt:    time.Time{},
 		UpdatedAt:    time.Time{},
 		DeletedAt:    nil,

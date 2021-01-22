@@ -3,6 +3,7 @@ package resolver
 import (
 	"github.com/graphql-go/graphql"
 	"github.com/lionelritchie29/staem-backend/input_models"
+	"github.com/lionelritchie29/staem-backend/models/friend_request"
 	"github.com/lionelritchie29/staem-backend/models/user"
 	"github.com/lionelritchie29/staem-backend/models/wallet"
 	"github.com/mitchellh/mapstructure"
@@ -19,10 +20,28 @@ func GetUser(p graphql.ResolveParams) (i interface{}, e error){
 	return user, nil
 }
 
+func GetUserByCode(p graphql.ResolveParams) (i interface{}, e error){
+	code := p.Args["code"].(string)
+	user := user.GetByCode(code)
+	return user, nil
+}
+
 func GetFriends(p graphql.ResolveParams) (i interface{}, e error){
 	id := p.Args["id"].(int)
 	friends := user.GetFriends(id)
 	return friends, nil
+}
+
+func GetReceivedFriendRequest(p graphql.ResolveParams) (i interface{}, e error){
+	id := p.Args["id"].(int)
+	req := friend_request.GetReceivedByUserId(id)
+	return req, nil
+}
+
+func GetSentFriendRequest(p graphql.ResolveParams) (i interface{}, e error){
+	id := p.Args["id"].(int)
+	req := friend_request.GetSentByUserId(id)
+	return req, nil
 }
 
 func GetUserComments(p graphql.ResolveParams) (i interface{}, e error){

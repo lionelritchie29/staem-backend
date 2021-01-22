@@ -31,6 +31,9 @@ func GetUserType() *graphql.Object{
 				"status": &graphql.Field{
 					Type: graphql.String,
 				},
+				"code": &graphql.Field{
+					Type: graphql.String,
+				},
 				"role": &graphql.Field{
 					Type: GetRoleType(),
 					Resolve: func(params graphql.ResolveParams) (interface{}, error) {

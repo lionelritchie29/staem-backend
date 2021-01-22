@@ -21,6 +21,21 @@ func GetRoot() *graphql.Object {
 				Resolve: res.AddTransaction,
 			},
 
+			"createFriendRequest": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"fromId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"toId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.CreateFriendRequest,
+			},
+
+
+
 			"createNewUser": &graphql.Field{
 				Type: graphql.Boolean,
 				Args: graphql.FieldConfigArgument{

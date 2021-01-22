@@ -164,6 +164,15 @@ func GetRoot() *graphql.Object{
 				},
 				Resolve: res.GetUserByAccountName,
 			},
+			"userByCode": &graphql.Field{
+				Type: typ.GetUserType(),
+				Args: graphql.FieldConfigArgument{
+					"code": &graphql.ArgumentConfig{
+						Type: graphql.String,
+					},
+				},
+				Resolve: res.GetUserByCode,
+			},
 			"friendsByUserId": &graphql.Field{
 				Type: graphql.NewList(typ.GetUserType()),
 				Args: graphql.FieldConfigArgument{
@@ -190,6 +199,22 @@ func GetRoot() *graphql.Object{
 					},
 				},
 				Resolve: res.GetUserComments,
+			},"friendRequestByUserId": &graphql.Field{
+				Type: graphql.NewList(typ.GetFriendRequestType()),
+				Args: graphql.FieldConfigArgument{
+					"id": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.GetReceivedFriendRequest,
+			},"sentFriendRequestById": &graphql.Field{
+				Type: graphql.NewList(typ.GetSentFriendRequestType()),
+				Args: graphql.FieldConfigArgument{
+					"id": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.GetSentFriendRequest,
 			},
 
 			// Auth
