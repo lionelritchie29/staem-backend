@@ -11,7 +11,7 @@ func LoginResolver(p graphql.ResolveParams) (i interface{}, e error){
 	accountName := p.Args["accountName"].(string)
 	password := p.Args["password"].(string)
 
-	findUser := user.GetByAccountName(accountName)
+	findUser := user.GetByAccountName(accountName, true)
 
 	fmt.Println(findUser)
 
@@ -21,4 +21,13 @@ func LoginResolver(p graphql.ResolveParams) (i interface{}, e error){
 	}
 
 	return nil, nil
+}
+
+func LogoutResolver(p graphql.ResolveParams) (i interface{}, e error){
+	id := p.Args["id"].(int)
+	if user.Logout(id) {
+		return true, nil
+	}
+
+	return false, nil
 }

@@ -31,6 +31,23 @@ func GetRoot() *graphql.Object {
 				Resolve: res.CreateUser,
 			},
 
+			"createNewComment": &graphql.Field{
+				Type: typ.GetUserCommentType(),
+				Args: graphql.FieldConfigArgument{
+					"srcUserId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"destUserId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"content": &graphql.ArgumentConfig{
+						Type: graphql.String,
+					},
+
+				},
+				Resolve: res.CreateComment,
+			},
+
 			"redeemWallet": &graphql.Field{
 				Type: typ.GetWalletVoucherType(),
 				Args: graphql.FieldConfigArgument{
@@ -42,6 +59,16 @@ func GetRoot() *graphql.Object {
 					},
 				},
 				Resolve: res.RedeemWallet,
+			},
+
+			"logout": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"id": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.LogoutResolver,
 			},
 		},
 	})

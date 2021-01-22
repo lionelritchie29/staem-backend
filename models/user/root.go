@@ -23,11 +23,31 @@ func Get(userId int) models.UserAccount {
 	return user
 }
 
-func GetByAccountName(accountName string) models.UserAccount {
+func GetByAccountName(accountName string, isLogin bool) models.UserAccount {
 	db := database.GetInstance()
 	var user models.UserAccount
 	db.Where("account_name = ?", accountName).First(&user)
+
+	if isLogin {
+		user.Status = "online"
+		db.Save(&user)
+	}
+
 	return user
+}
+
+func Logout(userId int) bool{
+	db := database.GetInstance()
+	var user models.UserAccount
+	db.Find(&user, userId)
+	user.Status = "offline"
+	db.Save(&user)
+
+	if db.Error != nil {
+		return false
+	}
+
+	return true
 }
 
 func GetByCustomUrl(customUrl string) models.UserAccount {

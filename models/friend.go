@@ -3,7 +3,6 @@ package models
 import (
 	"github.com/jinzhu/gorm"
 	"github.com/lionelritchie29/staem-backend/database"
-	"math/rand"
 	"time"
 )
 
@@ -25,21 +24,246 @@ func init() {
 }
 
 func (p *Friend) seed(db *gorm.DB) {
-	for i:=1; i<=10; i++ {
-		skipCount := rand.Intn(5) + 1
-		for j:=1; j<=10; j+=skipCount {
-			if j == i {
-				continue
-			} else {
-				db.Create(&Friend{
-					UserID:    uint(i),
-					FriendID:  uint(j),
-					CreatedAt: time.Time{},
-					UpdatedAt: time.Time{},
-					DeletedAt: nil,
-				})
-			}
-		}
-	}
+	db.Create(&Friend{
+		UserID:    1,
+		FriendID:  2,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&Friend{
+		UserID:    2,
+		FriendID:  1,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&Friend{
+		UserID:    1,
+		FriendID:  3,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&Friend{
+		UserID:    3,
+		FriendID:  1,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&Friend{
+		UserID:    1,
+		FriendID:  4,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&Friend{
+		UserID:    4,
+		FriendID:  1,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&Friend{
+		UserID:    2,
+		FriendID:  3,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+	db.Create(&Friend{
+		UserID:    3,
+		FriendID:  2,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&Friend{
+		UserID:    2,
+		FriendID:  4,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+	db.Create(&Friend{
+		UserID:    4,
+		FriendID:  2,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&Friend{
+		UserID:    5,
+		FriendID:  4,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+	db.Create(&Friend{
+		UserID:    4,
+		FriendID:  5,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+	db.Create(&Friend{
+		UserID:    5,
+		FriendID:  6,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+	db.Create(&Friend{
+		UserID:    6,
+		FriendID:  5,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+	db.Create(&Friend{
+		UserID:    5,
+		FriendID:  7,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+	db.Create(&Friend{
+		UserID:    7,
+		FriendID:  5,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&Friend{
+		UserID:    6,
+		FriendID:  8,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&Friend{
+		UserID:    8,
+		FriendID:  6,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+	db.Create(&Friend{
+		UserID:    8,
+		FriendID:  9,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+	db.Create(&Friend{
+		UserID:    9,
+		FriendID:  8,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+	db.Create(&Friend{
+		UserID:    10,
+		FriendID:  1,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&Friend{
+		UserID:    1,
+		FriendID:  10,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&Friend{
+		UserID:    9,
+		FriendID:  10,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&Friend{
+		UserID:    10,
+		FriendID:  9,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+	db.Create(&Friend{
+		UserID:    1,
+		FriendID:  8,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&Friend{
+		UserID:    8,
+		FriendID:  1,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+	db.Create(&Friend{
+		UserID:    2,
+		FriendID:  10,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&Friend{
+		UserID:    10,
+		FriendID:  2,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+	db.Create(&Friend{
+		UserID:    2,
+		FriendID:  9,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+	db.Create(&Friend{
+		UserID:    9,
+		FriendID:  2,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&Friend{
+		UserID:    3,
+		FriendID:  8,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+	db.Create(&Friend{
+		UserID:    8,
+		FriendID:  3,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
 }
 
