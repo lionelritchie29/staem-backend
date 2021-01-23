@@ -78,14 +78,5 @@ func (p *ReceivedFriendRequest) seed(db *gorm.DB) {
 		UpdatedAt: time.Time{},
 		DeletedAt: nil,
 	})
-
-	db.Create(&ReceivedFriendRequest{
-		UserID:    2,
-		FriendID:  1,
-		Status:    "pending",
-		CreatedAt: time.Time{},
-		UpdatedAt: time.Time{},
-		DeletedAt: nil,
-	})
 }
 

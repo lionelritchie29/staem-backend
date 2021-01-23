@@ -1,6 +1,7 @@
 package friend_request
 
 import (
+	"fmt"
 	"github.com/lionelritchie29/staem-backend/database"
 	"github.com/lionelritchie29/staem-backend/models"
 	"time"
@@ -23,7 +24,7 @@ func GetSentByUserId(userId int) []models.SentFriendRequest{
 func Create(fromId, toId int) bool {
 	db := database.GetInstance()
 
-	received := db.Create(models.ReceivedFriendRequest{
+	received := db.Create(&models.SentFriendRequest{
 		UserID:    uint(fromId),
 		FriendID:  uint(toId),
 		Status:    "pending",
@@ -32,7 +33,7 @@ func Create(fromId, toId int) bool {
 		DeletedAt: nil,
 	})
 
-	sent := db.Create(models.SentFriendRequest{
+	sent := db.Create(&models.ReceivedFriendRequest{
 		UserID:    uint(toId),
 		FriendID:  uint(fromId),
 		Status:    "pending",
@@ -72,7 +73,11 @@ func Accept(fromId, toId int) bool {
 		DeletedAt: nil,
 	})
 
-	if deleteReceived != nil || deleteSent != nil || createFriend != nil || createFriendReverse != nil {
+	if deleteReceived.Error != nil || deleteSent.Error != nil || createFriend.Error != nil || createFriendReverse.Error != nil {
+		fmt.Println(deleteReceived)
+		fmt.Println(deleteSent)
+		fmt.Println(createFriend)
+		fmt.Println(createFriendReverse)
 		return false
 	}
 
@@ -84,10 +89,10 @@ func Reject(fromId, toId int) bool {
 	var received models.ReceivedFriendRequest
 	var sent models.SentFriendRequest
 
-	deleteReceived := db.Where("user_id = ? AND friend_id = ?", fromId, toId).Delete(&received)
-	deleteSent := db.Where("user_id = ? AND friend_id = ?", toId, fromId).Delete(&sent)
+	deleteReceived := db.Where("user_id = ? AND friend_id = ?", fromId, toId).Unscoped().Delete(&received)
+	deleteSent := db.Where("user_id = ? AND friend_id = ?", toId, fromId).Unscoped().Delete(&sent)
 
-	if deleteReceived != nil || deleteSent != nil  {
+	if deleteReceived.Error != nil || deleteSent.Error != nil  {
 		return false
 	}
 
@@ -100,7 +105,7 @@ func Ignore(fromId, toId int) bool {
 
 	deleteReceived := db.Where("user_id = ? AND friend_id = ?", fromId, toId).Delete(&received)
 
-	if deleteReceived != nil {
+	if deleteReceived.Error != nil {
 		return false
 	}
 

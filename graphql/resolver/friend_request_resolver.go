@@ -32,3 +32,10 @@ func IgnoreFriendRequest(p graphql.ResolveParams) (i interface{}, e error) {
 
 	return friend_request.Ignore(fromId, toId), nil
 }
+
+func CancelFriendRequesst(p graphql.ResolveParams) (i interface{}, e error) {
+	fromId := p.Args["fromId"].(int)
+	toId := p.Args["toId"].(int)
+
+	return friend_request.Ignore(fromId, toId), nil
+}

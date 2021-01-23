@@ -12,6 +12,9 @@ func GetUserProfileType() *graphql.Object {
 				"displayName": &graphql.Field{
 					Type: graphql.String,
 				},
+				"realName": &graphql.Field{
+					Type: graphql.String,
+				},
 				"level": &graphql.Field{
 					Type: graphql.Int,
 				},

@@ -34,7 +34,44 @@ func GetRoot() *graphql.Object {
 				Resolve: res.CreateFriendRequest,
 			},
 
+			"acceptFriendRequest": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"fromId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"toId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.AcceptFriendRequest,
+			},
 
+			"rejectFriendRequest": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"fromId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"toId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.RejectFriendRequest,
+			},
+
+			"ignoreFriendRequest": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"fromId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"toId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.IgnoreFriendRequest,
+			},
 
 			"createNewUser": &graphql.Field{
 				Type: graphql.Boolean,
