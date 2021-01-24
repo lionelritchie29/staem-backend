@@ -41,6 +41,16 @@ func GetRoot() *graphql.Object{
 				Resolve: res.GetDeveloper,
 			},
 
+			//tags and genres
+			"tags": &graphql.Field{
+				Type: graphql.NewList(typ.GetGameTagType()),
+				Resolve: res.GetTags,
+			},
+			"genres": &graphql.Field{
+				Type: graphql.NewList(typ.GetGameGenreType()),
+				Resolve: res.GetGenre,
+			},
+
 			// Games
 			"games": &graphql.Field{
 				Type: graphql.NewList(typ.GetGameType()),

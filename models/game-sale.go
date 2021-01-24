@@ -3,13 +3,14 @@ package models
 import (
 	"github.com/jinzhu/gorm"
 	"github.com/lionelritchie29/staem-backend/database"
+	"syreclabs.com/go/faker"
 	"time"
 )
 
 type GameSale struct {
 	GameID uint `gorm:"primary_key;autoIncrement:false"`
 	Discount int
-	ValidTo string
+	ValidTo time.Time
 	CreatedAt time.Time
 	UpdatedAt time.Time
 	DeletedAt *time.Time `gorm:"index"`
@@ -25,10 +26,12 @@ func init() {
 }
 
 func (p *GameSale) seed(db *gorm.DB) {
+	startDate := time.Date(2020, time.November, 17, 12, 0, 0, 0, time.UTC)
+
 	db.Create(&GameSale{
 		GameID:    1,
 		Discount:  55,
-		ValidTo:   time.Now().Format("2006-01-02"),
+		ValidTo:   faker.Time().Between(startDate, time.Now()),
 		CreatedAt: time.Time{},
 		UpdatedAt: time.Time{},
 		DeletedAt: nil,
@@ -37,7 +40,7 @@ func (p *GameSale) seed(db *gorm.DB) {
 	db.Create(&GameSale{
 		GameID:    2,
 		Discount:  65,
-		ValidTo:   time.Now().Format("2006-01-02"),
+		ValidTo:   faker.Time().Between(startDate, time.Now()),
 		CreatedAt: time.Time{},
 		UpdatedAt: time.Time{},
 		DeletedAt: nil,
@@ -46,7 +49,7 @@ func (p *GameSale) seed(db *gorm.DB) {
 	db.Create(&GameSale{
 		GameID:    3,
 		Discount:  35,
-		ValidTo:   time.Now().Format("2006-01-02"),
+		ValidTo:   faker.Time().Between(startDate, time.Now()),
 		CreatedAt: time.Time{},
 		UpdatedAt: time.Time{},
 		DeletedAt: nil,
@@ -55,7 +58,7 @@ func (p *GameSale) seed(db *gorm.DB) {
 	db.Create(&GameSale{
 		GameID:    5,
 		Discount:  70,
-		ValidTo:   time.Now().Format("2006-01-02"),
+		ValidTo:   faker.Time().Between(startDate, time.Now()),
 		CreatedAt: time.Time{},
 		UpdatedAt: time.Time{},
 		DeletedAt: nil,
@@ -64,7 +67,7 @@ func (p *GameSale) seed(db *gorm.DB) {
 	db.Create(&GameSale{
 		GameID:    7,
 		Discount:  20,
-		ValidTo:   time.Now().Format("2006-01-02"),
+		ValidTo:   faker.Time().Between(startDate, time.Now()),
 		CreatedAt: time.Time{},
 		UpdatedAt: time.Time{},
 		DeletedAt: nil,
@@ -73,7 +76,34 @@ func (p *GameSale) seed(db *gorm.DB) {
 	db.Create(&GameSale{
 		GameID:    9,
 		Discount:  45,
-		ValidTo:   time.Now().Format("2006-01-02"),
+		ValidTo:   faker.Time().Between(startDate, time.Now()),
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameSale{
+		GameID:    12,
+		Discount:  65,
+		ValidTo:   faker.Time().Between(startDate, time.Now()),
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameSale{
+		GameID:    13,
+		Discount:  45,
+		ValidTo:   faker.Time().Between(startDate, time.Now()),
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameSale{
+		GameID:    15,
+		Discount:  30,
+		ValidTo:   faker.Time().Between(startDate, time.Now()),
 		CreatedAt: time.Time{},
 		UpdatedAt: time.Time{},
 		DeletedAt: nil,

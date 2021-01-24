@@ -239,4 +239,68 @@ func (p *GameDetailTag) seed(db *gorm.DB) {
 		UpdatedAt:   time.Time{},
 		DeletedAt:   nil,
 	})
+
+	db.Create(&GameDetailTag{
+		GameID:      11,
+		GameTagID: 	  3,
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&GameDetailTag{
+		GameID:      11,
+		GameTagID: 	  1,
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&GameDetailTag{
+		GameID:      11,
+		GameTagID: 	  2,
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&GameDetailTag{
+		GameID:      12,
+		GameTagID: 	  3,
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&GameDetailTag{
+		GameID:      12,
+		GameTagID: 	  7,
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&GameDetailTag{
+		GameID:      13,
+		GameTagID: 	  2,
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&GameDetailTag{
+		GameID:      14,
+		GameTagID: 	  8,
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&GameDetailTag{
+		GameID:      15,
+		GameTagID: 	  9,
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
 }

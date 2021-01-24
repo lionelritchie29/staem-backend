@@ -1,12 +1,18 @@
 package game
 
 import (
+	"fmt"
 	"github.com/lionelritchie29/staem-backend/database"
+	"github.com/lionelritchie29/staem-backend/helpers"
+	"github.com/lionelritchie29/staem-backend/input_models"
 	"github.com/lionelritchie29/staem-backend/models"
+	"os"
 	"strconv"
+	"syreclabs.com/go/faker"
+	"time"
 )
 
-func GetAll() []models.Game{
+func GetAll() []models.Game {
 	db := database.GetInstance()
 	var games []models.Game
 
@@ -98,10 +104,10 @@ func GetFeaturedAndRecommendedGame() []models.Game {
 	var featuredGames []models.Game
 
 	db.Raw("SELECT * FROM games WHERE id IN (" +
-				"SELECT game_id FROM game_playtimes " +
-				"WHERE TO_DATE(date, 'YYYY-MM-DD') >= CURRENT_DATE - INTERVAL '14 day' " +
-				"GROUP BY game_id" +
-			")").Scan(&featuredGames)
+		"SELECT game_id FROM game_playtimes " +
+		"WHERE TO_DATE(date, 'YYYY-MM-DD') >= CURRENT_DATE - INTERVAL '14 day' " +
+		"GROUP BY game_id" +
+		")").Scan(&featuredGames)
 
 	return featuredGames
 }
@@ -110,9 +116,9 @@ func GetCommunityRecommends() []models.Game {
 	db := database.GetInstance()
 	var communityRecommendedGames []models.Game
 	db.Raw("SELECT * FROM games WHERE id IN (" +
-		   		"SELECT game_id FROM game_reviews " +
-				"GROUP BY game_id ORDER BY SUM(upvote_count) " +
-				"DESC LIMIT 5" +
+		"SELECT game_id FROM game_reviews " +
+		"GROUP BY game_id ORDER BY SUM(upvote_count) " +
+		"DESC LIMIT 5" +
 		")").Scan(&communityRecommendedGames)
 	return communityRecommendedGames
 }
@@ -130,11 +136,11 @@ func GetTopSellers() []models.Game {
 	db := database.GetInstance()
 	var topSellerGames []models.Game
 	db.Raw("SELECT * FROM games WHERE id IN (" +
-		   		"SELECT game FROM game_transaction_details d " +
-		   		"JOIN game_transaction_headers h ON d.game_transaction_id = h.id " +
-		   		"WHERE h.transaction_date::date >= CURRENT_DATE - INTERVAL '7 day' " +
-		   		"GROUP BY game ORDER BY SUM(quantity) DESC" +
-			")").Scan(&topSellerGames)
+		"SELECT game FROM game_transaction_details d " +
+		"JOIN game_transaction_headers h ON d.game_transaction_id = h.id " +
+		"WHERE h.transaction_date::date >= CURRENT_DATE - INTERVAL '7 day' " +
+		"GROUP BY game ORDER BY SUM(quantity) DESC" +
+		")").Scan(&topSellerGames)
 	return topSellerGames
 }
 
@@ -155,3 +161,151 @@ func GetSpecialCategory() []models.Game {
 
 	return gamesOnSale
 }
+
+func Create(newGame input_models.NewGame) models.Game {
+	db := database.GetInstance()
+
+	game := models.Game{
+		Publisher:   newGame.PublisherId,
+		Developer:   newGame.DeveloperId,
+		Title:       newGame.Title,
+		Description: newGame.Description,
+		Price:       newGame.Price,
+		ReleaseDate: newGame.ReleaseDate,
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	}
+
+	db.Create(&game)
+
+	for i := 0; i < len(newGame.TagIds); i++ {
+		db.Create(&models.GameDetailTag{
+			GameID:    game.ID,
+			GameTagID: uint(newGame.TagIds[i]),
+			CreatedAt: time.Time{},
+			UpdatedAt: time.Time{},
+			DeletedAt: nil,
+		})
+	}
+
+	for i := 0; i < len(newGame.GenreIds); i++ {
+		db.Create(&models.GameDetailGenre{
+			GameID:      game.ID,
+			GameGenreID: uint(newGame.GenreIds[i]),
+			CreatedAt:   time.Time{},
+			UpdatedAt:   time.Time{},
+			DeletedAt:   nil,
+		})
+	}
+
+	db.Create(&models.GameImage{
+		GameID:    game.ID,
+		Url:       "header.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	helpers.MakeDirectoryIfNotExists(os.Getenv("IMAGE_PATH") + "/games/" + strconv.FormatInt(int64(game.ID), 10))
+	helpers.SaveImage(newGame.GameHeaderImage, "games/"+strconv.FormatInt(int64(game.ID), 10)+"/header.jpg")
+
+	for i := 0; i < len(newGame.GameImages); i++ {
+		db.Create(&models.GameImage{
+			GameID:    game.ID,
+			Url:       strconv.FormatInt(int64(i+1), 10) + ".jpg",
+			CreatedAt: time.Time{},
+			UpdatedAt: time.Time{},
+			DeletedAt: nil,
+		})
+
+		filename := "games/" + strconv.FormatInt(int64(game.ID), 10) + "/" + strconv.FormatInt(int64(i+1), 10) + ".jpg"
+		helpers.SaveImage(newGame.GameImages[i], filename)
+	}
+
+	db.Create(&models.GameSystemRequirement{
+		GameID:          game.ID,
+		IsRecommended:   true,
+		Note:            faker.Lorem().Sentence(4),
+		OperatingSystem: "Windows 10",
+		Processor:       "FX-6350 or Equivalent; Core i5-3570 or Equivalent",
+		Memory:          "8 GB RAM",
+		Graphics:        "AMD: Radeon 7970/Radeon R9 280x or Equivalent; NVIDIA: GeForce GTX 760 or Equivalent",
+		DirectX:         "Version 11",
+		Storage:         "50 GB available space",
+		CreatedAt:       time.Time{},
+		UpdatedAt:       time.Time{},
+		DeletedAt:       nil,
+	})
+
+	db.Create(&models.GameSystemRequirement{
+		GameID:          game.ID,
+		IsRecommended:   false,
+		Note:            faker.Lorem().Sentence(4),
+		OperatingSystem: "Windows 10",
+		Processor:       "Ryzen 3 1300X or Equivalent; Core i7-4790 or Equivalent",
+		Memory:          "16 GB RAM",
+		Graphics:        "AMD: Radeon RX 480 or Equivalent; NVIDIA: GeForce GTX 1060 or Equivalent",
+		DirectX:         "Version 11",
+		Storage:         "50 GB available space",
+		CreatedAt:       time.Time{},
+		UpdatedAt:       time.Time{},
+		DeletedAt:       nil,
+	})
+
+	return game
+}
+
+func Delete(id int) bool {
+	db := database.GetInstance()
+	var game models.Game
+	res := db.Delete(game, id)
+
+	if res.Error != nil {
+		fmt.Println(res.Error)
+		return false
+	}
+
+	return true
+}
+
+//func Update(newGame input_models.NewGame, id int) {
+//	db := database.GetInstance()
+//
+//	db.Model(&models.Game{}).Where("id = ?", id).Update(models.Game{
+//		Publisher:   newGame.PublisherId,
+//		Developer:   newGame.DeveloperId,
+//		Title:       newGame.Title,
+//		Description: newGame.Description,
+//		Price:       newGame.Price,
+//		ReleaseDate: newGame.ReleaseDate,
+//		CreatedAt:   time.Time{},
+//		UpdatedAt:   time.Time{},
+//		DeletedAt:   nil,
+//	})
+//
+//	db.Create(&models.GameImage{
+//		GameID:    game.ID,
+//		Url:       "header.jpg",
+//		CreatedAt: time.Time{},
+//		UpdatedAt: time.Time{},
+//		DeletedAt: nil,
+//	})
+//
+//	helpers.SaveImage(newGame.GameHeaderImage, "games/" + strconv.FormatInt(int64(game.ID), 10) + "/header.jpg")
+//
+//	for i:=0; i<len(newGame.GameImages); i++ {
+//		db.Create(&models.GameImage{
+//			GameID:    game.ID,
+//			Url:       strconv.FormatInt(int64(i+1), 10) + ".jpg",
+//			CreatedAt: time.Time{},
+//			UpdatedAt: time.Time{},
+//			DeletedAt: nil,
+//		})
+//
+//		filename := "games/" + strconv.FormatInt(int64(game.ID), 10) + "/" + strconv.FormatInt(int64(i+1), 10) + ".jpg"
+//		helpers.SaveImage(newGame.GameImages[i], filename)
+//	}
+//
+//	return game
+//}

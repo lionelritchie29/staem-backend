@@ -27,7 +27,7 @@ func init() {
 func (p *UserGame) seed(db *gorm.DB) {
 	for i:=1; i<=10; i++ {
 		skipCount := rand.Intn(5) + 1
-		for j:=1; j<=10; j+=skipCount {
+		for j:=1; j<=15; j+=skipCount {
 			if j == i {
 				continue
 			} else {

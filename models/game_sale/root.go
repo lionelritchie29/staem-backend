@@ -12,6 +12,13 @@ func GetAll() []models.GameSale{
 	return sales
 }
 
+func GetByGameId(id int) models.GameSale {
+	db := database.GetInstance()
+	var sale models.GameSale
+	db.Where("game_id = ?", id).Find(&sale)
+	return sale
+}
+
 func GetMoreThanFiftyPercentDiscount() []models.GameSale {
 	db := database.GetInstance()
 	var sales []models.GameSale

@@ -2,7 +2,9 @@ package resolver
 
 import (
 	"github.com/graphql-go/graphql"
+	"github.com/lionelritchie29/staem-backend/input_models"
 	"github.com/lionelritchie29/staem-backend/models/game"
+	"github.com/mitchellh/mapstructure"
 )
 
 func GetGames(p graphql.ResolveParams) (i interface{}, e error) {
@@ -50,4 +52,21 @@ func GetRecentlyPublishedGames(p graphql.ResolveParams) (i interface{}, e error)
 func GetSpecialCategoryGames(p graphql.ResolveParams) (i interface{}, e error) {
 	specialGames := game.GetSpecialCategory()
 	return specialGames, nil
+}
+
+func CreateGame(p graphql.ResolveParams) (i interface{}, e error) {
+	newGameRaw := p.Args["newGame"]
+	var newGame input_models.NewGame
+	mapstructure.Decode(newGameRaw, &newGame)
+	gameCreated := game.Create(newGame)
+	return gameCreated, nil
+}
+
+func DeleteGame(p graphql.ResolveParams) (i interface{}, e error) {
+	id := p.Args["id"].(int)
+	if game.Delete(id) {
+		return true, nil
+	}
+
+	return false, nil
 }

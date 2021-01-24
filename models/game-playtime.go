@@ -929,4 +929,459 @@ func (p *GamePlaytime) seed(db *gorm.DB) {
 		UpdatedAt: time.Time{},
 		DeletedAt: nil,
 	})
+
+	//
+	db.Create(&GamePlaytime{
+		GameID:    11,
+		PlayHour:  221,
+		Date:      "2020-11-01",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    11,
+		PlayHour:  222,
+		Date:      "2020-11-08",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    11,
+		PlayHour:  258,
+		Date:      "2020-11-15",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    11,
+		PlayHour:  133,
+		Date:      "2020-11-22",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    11,
+		PlayHour:  231,
+		Date:      "2020-11-29",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    11,
+		PlayHour:  89,
+		Date:      "2020-12-06",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    11,
+		PlayHour:  121,
+		Date:      "2020-12-13",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    11,
+		PlayHour:  212,
+		Date:      "2020-12-20",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    11,
+		PlayHour:  432,
+		Date:      "2020-12-27",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    11,
+		PlayHour:  123,
+		Date:      "2021-01-03",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	//
+	db.Create(&GamePlaytime{
+		GameID:    12,
+		PlayHour:  147,
+		Date:      "2020-11-01",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    12,
+		PlayHour:  311,
+		Date:      "2020-11-08",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    12,
+		PlayHour:  99,
+		Date:      "2020-11-15",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    12,
+		PlayHour:  100,
+		Date:      "2020-11-22",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    12,
+		PlayHour:  111,
+		Date:      "2020-11-29",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    12,
+		PlayHour:  121,
+		Date:      "2020-12-06",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    12,
+		PlayHour:  99,
+		Date:      "2020-12-13",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    12,
+		PlayHour:  88,
+		Date:      "2020-12-20",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    12,
+		PlayHour:  121,
+		Date:      "2020-12-27",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    12,
+		PlayHour:  321,
+		Date:      "2021-01-03",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	//
+	db.Create(&GamePlaytime{
+		GameID:    13,
+		PlayHour:  147,
+		Date:      "2020-11-01",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    13,
+		PlayHour:  311,
+		Date:      "2020-11-08",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    13,
+		PlayHour:  258,
+		Date:      "2020-11-15",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    13,
+		PlayHour:  111,
+		Date:      "2020-11-22",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    13,
+		PlayHour:  231,
+		Date:      "2020-11-29",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    13,
+		PlayHour:  111,
+		Date:      "2020-12-06",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    13,
+		PlayHour:  222,
+		Date:      "2020-12-13",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    13,
+		PlayHour:  111,
+		Date:      "2020-12-20",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    13,
+		PlayHour:  257,
+		Date:      "2020-12-27",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    13,
+		PlayHour:  335,
+		Date:      "2021-01-03",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	//
+	db.Create(&GamePlaytime{
+		GameID:    14,
+		PlayHour:  123,
+		Date:      "2020-11-01",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    14,
+		PlayHour:  111,
+		Date:      "2020-11-08",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    14,
+		PlayHour:  221,
+		Date:      "2020-11-15",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    14,
+		PlayHour:  133,
+		Date:      "2020-11-22",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    14,
+		PlayHour:  77,
+		Date:      "2020-11-29",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    14,
+		PlayHour:  89,
+		Date:      "2020-12-06",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    14,
+		PlayHour:  112,
+		Date:      "2020-12-13",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    14,
+		PlayHour:  112,
+		Date:      "2020-12-20",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    14,
+		PlayHour:  257,
+		Date:      "2020-12-27",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    14,
+		PlayHour:  222,
+		Date:      "2021-01-03",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	//
+	db.Create(&GamePlaytime{
+		GameID:    15,
+		PlayHour:  122,
+		Date:      "2020-11-01",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    15,
+		PlayHour:  142,
+		Date:      "2020-11-08",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    15,
+		PlayHour:  231,
+		Date:      "2020-11-15",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    15,
+		PlayHour:  133,
+		Date:      "2020-11-22",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    15,
+		PlayHour:  77,
+		Date:      "2020-11-29",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    15,
+		PlayHour:  321,
+		Date:      "2020-12-06",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    15,
+		PlayHour:  321,
+		Date:      "2020-12-13",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    15,
+		PlayHour:  231,
+		Date:      "2020-12-20",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    15,
+		PlayHour:  123,
+		Date:      "2020-12-27",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GamePlaytime{
+		GameID:    15,
+		PlayHour:  213,
+		Date:      "2021-01-03",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
 }

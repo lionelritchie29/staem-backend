@@ -34,6 +34,25 @@ func GetRoot() *graphql.Object {
 				Resolve: res.CreateFriendRequest,
 			},
 
+			"createGame": &graphql.Field{
+				Type: typ.GetGameType(),
+				Args: graphql.FieldConfigArgument{
+					"newGame": &graphql.ArgumentConfig{
+						Type: inp_typ.GetGameInputType(),
+					},
+				},
+				Resolve: res.CreateGame,
+			},
+			"deleteGame": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"id": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.DeleteGame,
+			},
+
 			"acceptFriendRequest": &graphql.Field{
 				Type: graphql.Boolean,
 				Args: graphql.FieldConfigArgument{

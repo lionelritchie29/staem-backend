@@ -148,6 +148,66 @@ func (p *Game) seed(db *gorm.DB) {
 		UpdatedAt:   time.Time{},
 		DeletedAt:   nil,
 	})
+
+	db.Create(&Game{
+		Publisher:   1,
+		Developer:   2,
+		Title:       "Phasmophobia",
+		Description: "Phasmophobia is a 4 player online co-op psychological horror. Paranormal activity is on the rise and it’s up to you and your team to use all the ghost hunting equipment at your disposal in order to gather as much evidence as you can.",
+		Price:       89999,
+		ReleaseDate: "2020-09-19",
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&Game{
+		Publisher:   5,
+		Developer:   10,
+		Title:       "World Rally Championship",
+		Description: "The most complete and authentic official WRC simulation yet. New physics for all surfaces, a completely redesigned career mode, dynamic weather conditions, 50 teams, 14 countries, 100 tracks, weekly challenges and an eSports...",
+		Price:       204000,
+		ReleaseDate: "2020-09-08",
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&Game{
+		Publisher:   3,
+		Developer:   4,
+		Title:       "Resident Evil 7 Biohazard",
+		Description: "Fear and isolation seep through the walls of an abandoned southern farmhouse. \"7\" marks a new beginning for survival horror with the “Isolated View” of the visceral new first-person perspective.",
+		Price:       239999,
+		ReleaseDate: "2017-01-14",
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&Game{
+		Publisher:   5,
+		Developer:   8,
+		Title:       "Tom Clancy's Ghost Recon",
+		Description: "Create a team with up to 3 friends in Tom Clancy’s Ghost Recon® Wildlands and enjoy the ultimate military shooter experience set in a massive, dangerous, and responsive open world.",
+		Price:       515000,
+		ReleaseDate: "2017-03-07",
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&Game{
+		Publisher:   6,
+		Developer:   6,
+		Title:       "Unrailed!",
+		Description: "Unrailed! is a co-op multiplayer game where you have to work together with your friends to build a train track across endless procedurally generated worlds. Master random encounters with its inhabitants, upgrade your train and keep it from derailing!",
+		Price:       599999,
+		ReleaseDate: "2020-09-24",
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
 }
 
 
