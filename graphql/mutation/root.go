@@ -182,6 +182,22 @@ func GetRoot() *graphql.Object {
 				},
 				Resolve: res.LogoutResolver,
 			},
+
+			"createReport": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"reporterId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"reason": &graphql.ArgumentConfig{
+						Type: graphql.String,
+					},
+				},
+				Resolve: res.CreateReport,
+			},
 		},
 	})
 }
