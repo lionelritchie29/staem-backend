@@ -18,12 +18,10 @@ func SaveImage(encodedBase64Img string, filename string) {
 	decoded, _ := base64.StdEncoding.DecodeString(encodedBase64Img)
 
 	writeFilename := os.Getenv("IMAGE_PATH") + "/" + filename
-	fmt.Println(writeFilename)
 	errs := ioutil.WriteFile( writeFilename, decoded, os.ModePerm)
 
 	if errs != nil {
 		fmt.Print("Error Save File: ")
 		fmt.Println(errs)
 	}
-
 }

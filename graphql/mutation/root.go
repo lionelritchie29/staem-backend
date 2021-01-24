@@ -53,6 +53,47 @@ func GetRoot() *graphql.Object {
 				Resolve: res.DeleteGame,
 			},
 
+			"createPromo": &graphql.Field{
+				Type: typ.GetGameSaleType(),
+				Args: graphql.FieldConfigArgument{
+					"gameId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"discount": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"validTo": &graphql.ArgumentConfig{
+						Type: graphql.String,
+					},
+				},
+				Resolve: res.CreateSale,
+			},
+			"deletePromo": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"gameId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.DeleteSale,
+			},
+			"updatePromo": &graphql.Field{
+				Type: typ.GetGameSaleType(),
+				Args: graphql.FieldConfigArgument{
+					"gameId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"discount": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"validTo": &graphql.ArgumentConfig{
+						Type: graphql.String,
+					},
+				},
+				Resolve: res.UpdateSale,
+			},
+
+
 			"acceptFriendRequest": &graphql.Field{
 				Type: graphql.Boolean,
 				Args: graphql.FieldConfigArgument{
