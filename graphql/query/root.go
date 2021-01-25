@@ -226,6 +226,19 @@ func GetRoot() *graphql.Object{
 				},
 				Resolve: res.GetSentFriendRequest,
 			},
+			"reportsByUserId": &graphql.Field{
+				Type: graphql.NewList(typ.GetUserReportType()),
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.GetReportsByUserId,
+			},
+			"unsuspendRequests": &graphql.Field{
+				Type: graphql.NewList(typ.GetUnsuspendRequestType()),
+				Resolve: res.GetAllSuspendedRequests,
+			},
 
 			// Auth
 			"login": &graphql.Field{

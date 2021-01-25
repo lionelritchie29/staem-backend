@@ -5,6 +5,12 @@ import (
 	"github.com/lionelritchie29/staem-backend/models/user_report"
 )
 
+func GetReportsByUserId (p graphql.ResolveParams) (i interface{}, e error){
+	userId := p.Args["userId"].(int)
+	reports := user_report.GetByUserId(userId)
+	return reports, nil
+}
+
 func CreateReport(p graphql.ResolveParams) (i interface{}, e error){
 	userId := p.Args["userId"].(int)
 	reporterId := p.Args["reporterId"].(int)

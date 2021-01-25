@@ -101,7 +101,7 @@ func (p *UserAccount) seed(db *gorm.DB) {
 		Password:     pass5,
 		WalletAmount: 777777,
 		Role:         1, //user-default, basic user
-		SuspendedAt:  time.Time{},
+		SuspendedAt:  time.Now(),
 		Status: "offline",
 		Code: faker.Number().Number(9),
 		CreatedAt:    time.Time{},

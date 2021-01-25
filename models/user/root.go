@@ -154,3 +154,30 @@ func Create(newUser input_models.NewUserAccount) bool {
 		return true
 	}
 }
+
+func Suspend(id int) bool {
+	db := database.GetInstance()
+	var user models.UserAccount
+	db.Find(&user, id)
+	user.SuspendedAt = time.Now()
+	res := db.Save(&user)
+
+	if res.Error != nil {
+		return false
+	}
+
+	return true
+}
+
+func Unsuspend(userId int) bool {
+	db := database.GetInstance()
+	db.Where("user_id = ?", userId).Unscoped().Delete(&models.UnsuspendRequest{})
+	db.Where("user_id = ?", userId).Unscoped().Delete(&models.UserReport{})
+
+	var user models.UserAccount
+	db.Find(&user, userId)
+	user.SuspendedAt = time.Time{}
+	db.Save(&user)
+
+	return true
+}

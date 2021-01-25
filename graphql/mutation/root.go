@@ -142,6 +142,45 @@ func GetRoot() *graphql.Object {
 				},
 				Resolve: res.CreateUser,
 			},
+			"suspendUser": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.SuspendUser,
+			},
+			"unsuspendUser": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.UnsuspendUser,
+			},
+			"createUnsuspendRequest": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"reason": &graphql.ArgumentConfig{
+						Type: graphql.String,
+					},
+				},
+				Resolve: res.CreateUnsuspendRequest,
+			},
+			"denyUnsuspendRequest": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.DenyUnsuspendRequest,
+			},
 
 			"createNewComment": &graphql.Field{
 				Type: typ.GetUserCommentType(),

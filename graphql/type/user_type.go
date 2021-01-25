@@ -25,8 +25,16 @@ func GetUserType() *graphql.Object{
 				"walletAmount": &graphql.Field{
 					Type: graphql.Int,
 				},
-				"suspended": &graphql.Field{
+				"suspendedAt": &graphql.Field{
 					Type: graphql.DateTime,
+					Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+						parent := p.Source.(models.UserAccount)
+						if (parent.SuspendedAt.IsZero()) {
+							return nil, nil
+						} else {
+							return parent.SuspendedAt, nil
+						}
+					},
 				},
 				"status": &graphql.Field{
 					Type: graphql.String,

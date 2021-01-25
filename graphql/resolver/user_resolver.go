@@ -84,3 +84,15 @@ func RedeemWallet(p graphql.ResolveParams) (i interface{}, e error){
 
 	return wallet, nil
 }
+
+func SuspendUser(p graphql.ResolveParams) (i interface{}, e error){
+	userId := p.Args["userId"].(int)
+	isSuccess := user.Suspend(userId)
+	return isSuccess, nil
+}
+
+func UnsuspendUser(p graphql.ResolveParams) (i interface{}, e error){
+	userId := p.Args["userId"].(int)
+	isSuccess := user.Unsuspend(userId)
+	return isSuccess, nil
+}
