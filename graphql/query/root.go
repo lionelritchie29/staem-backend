@@ -65,6 +65,15 @@ func GetRoot() *graphql.Object{
 				},
 				Resolve: res.GetGamesByTitle,
 			},
+			"gamesByTitleLimit5": &graphql.Field{
+				Type: graphql.NewList(typ.GetGameType()),
+				Args: graphql.FieldConfigArgument{
+					"query": &graphql.ArgumentConfig{
+						Type: graphql.String,
+					},
+				},
+				Resolve: res.GetGamesByTitleLimit5,
+			},
 			"game": &graphql.Field{
 				Type: typ.GetGameType(),
 				Args: graphql.FieldConfigArgument{
@@ -238,6 +247,21 @@ func GetRoot() *graphql.Object{
 			"unsuspendRequests": &graphql.Field{
 				Type: graphql.NewList(typ.GetUnsuspendRequestType()),
 				Resolve: res.GetAllSuspendedRequests,
+			},
+
+			//wishlist
+			"wishlists": &graphql.Field{
+				Type: graphql.NewList(typ.GetUserWishlistType()),
+				Resolve: res.GetWishlists,
+			},
+			"wishlistByUserId": &graphql.Field{
+				Type: graphql.NewList(typ.GetUserWishlistType()),
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.GetWishlistByUserId,
 			},
 
 			// Auth

@@ -31,10 +31,12 @@ func Create(targetId, reporterId int, reason string) bool {
 		return false
 	} else {
 		var userIds []int
-		checkCount := db.Raw("SELECT \nuser_id\nFROM user_reports\nGROUP BY user_id\nHAVING COUNT(user_id) >= 5").Scan(&userIds)
+		checkCount := db.Raw("SELECT user_id FROM user_reports " +
+								"WHERE created_at >= CURRENT_DATE - INTERVAL '7 day' " +
+			"					GROUP BY user_id HAVING COUNT(user_id) >= 5").Scan(&userIds)
 		if checkCount.RowsAffected == 0 {
 			return true
-		} else { //user has been reported more than equals to 5
+		} else { //user has been reported more than equals to 5 in last week
 			user.Suspend(targetId)
 		}
 	}

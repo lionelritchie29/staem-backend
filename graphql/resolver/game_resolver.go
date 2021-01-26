@@ -18,6 +18,12 @@ func GetGamesByTitle(p graphql.ResolveParams) (i interface{}, e error) {
 	return games, nil
 }
 
+func GetGamesByTitleLimit5(p graphql.ResolveParams) (i interface{}, e error) {
+	searchQuery := p.Args["query"].(string)
+	games := game.GetByTitleLimit5(searchQuery)
+	return games, nil
+}
+
 func GetGame(p graphql.ResolveParams) (i interface{}, e error) {
 	id := p.Args["id"].(int)
 	game := game.Get(id)

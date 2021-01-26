@@ -28,6 +28,13 @@ func GetByTitle(query string) []models.Game {
 	return games
 }
 
+func GetByTitleLimit5(query string) []models.Game {
+	db := database.GetInstance()
+	var games []models.Game
+	db.Raw("SELECT * FROM games WHERE LOWER(title) LIKE LOWER('%" + query + "%') LIMIT 5").Scan(&games)
+	return games
+}
+
 func Get(id int) models.Game {
 	db := database.GetInstance()
 	var game models.Game
@@ -105,8 +112,8 @@ func GetFeaturedAndRecommendedGame() []models.Game {
 
 	db.Raw("SELECT * FROM games WHERE id IN (" +
 		"SELECT game_id FROM game_playtimes " +
-		"WHERE TO_DATE(date, 'YYYY-MM-DD') >= CURRENT_DATE - INTERVAL '14 day' " +
-		"GROUP BY game_id" +
+		"WHERE TO_DATE(date, 'YYYY-MM-DD') >= CURRENT_DATE - INTERVAL '7 day' " +
+		"GROUP BY game_id LIMIT 5" +
 		")").Scan(&featuredGames)
 
 	return featuredGames

@@ -199,6 +199,31 @@ func GetRoot() *graphql.Object {
 				Resolve: res.CreateComment,
 			},
 
+			"createWishlist": &graphql.Field{
+				Type: typ.GetUserWishlistType(),
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"gameId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.CreateWishlist,
+			},
+			"deleteWishlist": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"gameId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.DeleteWishlist,
+			},
+
 			"redeemWallet": &graphql.Field{
 				Type: typ.GetWalletVoucherType(),
 				Args: graphql.FieldConfigArgument{

@@ -5,6 +5,7 @@ import (
 	"github.com/lionelritchie29/staem-backend/models"
 	"github.com/lionelritchie29/staem-backend/models/developer"
 	"github.com/lionelritchie29/staem-backend/models/game"
+	"github.com/lionelritchie29/staem-backend/models/game_review"
 	"github.com/lionelritchie29/staem-backend/models/game_sale"
 	"github.com/lionelritchie29/staem-backend/models/publisher"
 )
@@ -77,6 +78,14 @@ func GetGameType() *graphql.Object {
 						gameP := params.Source.(models.Game)
 						sale := game_sale.GetByGameId(int(gameP.ID))
 						return sale, nil
+					},
+				},
+				"reviews": &graphql.Field{
+					Type: GetGameReviewType(),
+					Resolve: func(params graphql.ResolveParams) (interface{}, error) {
+						gameP := params.Source.(models.Game)
+						reviews := game_review.GetByGameId(int(gameP.ID))
+						return reviews, nil
 					},
 				},
 				"systemReq": &graphql.Field{
