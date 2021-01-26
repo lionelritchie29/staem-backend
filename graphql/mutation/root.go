@@ -262,6 +262,43 @@ func GetRoot() *graphql.Object {
 				},
 				Resolve: res.CreateReport,
 			},
+
+			"createGameReview": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"gameId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"content": &graphql.ArgumentConfig{
+						Type: graphql.String,
+					},
+					"isRecommended": &graphql.ArgumentConfig{
+						Type: graphql.Boolean,
+					},
+				},
+				Resolve: res.CreateGameReview,
+			},
+			"increseReviewUpvote": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"reviewId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.IncreaseReviewUpvoteCount,
+			},
+			"increseReviewDownvote": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"reviewId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.IncreaseReviewDownvoteCount,
+			},
 		},
 	})
 }

@@ -183,4 +183,49 @@ func (p *UserAccount) seed(db *gorm.DB) {
 		UpdatedAt:    time.Time{},
 		DeletedAt:    nil,
 	})
+
+	pass11, _ := helpers.HashPassword("admin-user")
+	db.Create(&UserAccount{
+		AccountName:  "admin-user",
+		Email:        "admin-user@yahoo.com",
+		Password:     pass11,
+		WalletAmount: -1,
+		Role:         4, //admin-user
+		SuspendedAt:  time.Time{},
+		Status: "offline",
+		Code: faker.Number().Number(9),
+		CreatedAt:    time.Time{},
+		UpdatedAt:    time.Time{},
+		DeletedAt:    nil,
+	})
+
+	pass12, _ := helpers.HashPassword("admin-promo")
+	db.Create(&UserAccount{
+		AccountName:  "admin-promo",
+		Email:        "admin-promo@yahoo.com",
+		Password:     pass12,
+		WalletAmount: -1,
+		Role:         3, //admin-promo
+		SuspendedAt:  time.Time{},
+		Status: "offline",
+		Code: faker.Number().Number(9),
+		CreatedAt:    time.Time{},
+		UpdatedAt:    time.Time{},
+		DeletedAt:    nil,
+	})
+
+	pass13, _ := helpers.HashPassword("admin-game")
+	db.Create(&UserAccount{
+		AccountName:  "admin-game",
+		Email:        "admin-game@yahoo.com",
+		Password:     pass13,
+		WalletAmount: -1,
+		Role:         2, //admin-game
+		SuspendedAt:  time.Time{},
+		Status: "offline",
+		Code: faker.Number().Number(9),
+		CreatedAt:    time.Time{},
+		UpdatedAt:    time.Time{},
+		DeletedAt:    nil,
+	})
 }

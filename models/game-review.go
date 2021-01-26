@@ -14,7 +14,6 @@ type GameReview struct {
 	IsRecommended bool
 	GameID uint
 	UserID uint
-	Title string
 	Content string
 	UpvoteCount int
 	DownvoteCount int
@@ -51,7 +50,6 @@ func (p *GameReview) seed(db *gorm.DB) {
 			IsRecommended: 	isRecommended,
 			GameID:         uint( rand.Intn(15) + 1 ),
 			UserID:         uint( rand.Intn(10) + 1 ),
-			Title:          faker.Lorem().Sentence(rand.Intn(3) + 1),
 			Content:        faker.Lorem().Paragraph(rand.Intn(10) + 3),
 			UpvoteCount:    rand.Intn(100 + 1 ),
 			DownvoteCount:  rand.Intn(100+ 1 ),

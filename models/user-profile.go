@@ -226,4 +226,62 @@ func (p *UserProfile) seed(db *gorm.DB) {
 		UpdatedAt:                time.Time{},
 		DeletedAt:                nil,
 	})
+
+	//admin
+	db.Create(&UserProfile{
+		Level:                    99,
+		Point:                    9999,
+		DisplayName:              "Admin User",
+		RealName:                 "Admin User",
+		CustomURL:                "adminuser",
+		AvatarFrameUrl:           "admin.jpg",
+		ProfilePictureUrl:        "admin.jpg",
+		ProfileBackgroundUrl:     "admin.jpg",
+		MiniProfileBackgroundUrl: "admin.jpg",
+		Summary:                  "admin",
+		Theme:                    "#CCCCCC",
+		FeaturedBadgeUrl:         "admin.jpg",
+		Country:                  "Admin gapunya negara :D",
+		CreatedAt:                time.Time{},
+		UpdatedAt:                time.Time{},
+		DeletedAt:                nil,
+	})
+
+	db.Create(&UserProfile{
+		Level:                    99,
+		Point:                    9999,
+		DisplayName:              "Admin Promo",
+		RealName:                 "Admin Promo",
+		CustomURL:                "adminpromo",
+		AvatarFrameUrl:           "admin.jpg",
+		ProfilePictureUrl:        "admin.jpg",
+		ProfileBackgroundUrl:     "admin.jpg",
+		MiniProfileBackgroundUrl: "admin.jpg",
+		Summary:                  "admin",
+		Theme:                    "#CCCCCC",
+		FeaturedBadgeUrl:         "admin.jpg",
+		Country:                  "Admin gapunya negara :D",
+		CreatedAt:                time.Time{},
+		UpdatedAt:                time.Time{},
+		DeletedAt:                nil,
+	})
+
+	db.Create(&UserProfile{
+		Level:                    99,
+		Point:                    9999,
+		DisplayName:              "Admin Game",
+		RealName:                 "Admin Game",
+		CustomURL:                "admingame",
+		AvatarFrameUrl:           "admin.jpg",
+		ProfilePictureUrl:        "admin.jpg",
+		ProfileBackgroundUrl:     "admin.jpg",
+		MiniProfileBackgroundUrl: "admin.jpg",
+		Summary:                  "admin",
+		Theme:                    "#CCCCCC",
+		FeaturedBadgeUrl:         "admin.jpg",
+		Country:                  "Admin gapunya negara :D",
+		CreatedAt:                time.Time{},
+		UpdatedAt:                time.Time{},
+		DeletedAt:                nil,
+	})
 }

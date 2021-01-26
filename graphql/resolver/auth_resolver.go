@@ -17,6 +17,7 @@ func LoginResolver(p graphql.ResolveParams) (i interface{}, e error){
 
 	if helpers.CheckPassword(findUser.Password, password) {
 		token, _ := helpers.GenerateToken(int(findUser.ID))
+
 		return token, nil
 	}
 

@@ -30,7 +30,12 @@ func Create(userId, gameId int) models.UserWishlist {
 		DeletedAt: nil,
 	}
 
-	db.Create(&wishlist)
+	res := db.Create(&wishlist)
+
+	if res.Error != nil {
+		return models.UserWishlist{}
+	}
+
 	return wishlist
 }
 
