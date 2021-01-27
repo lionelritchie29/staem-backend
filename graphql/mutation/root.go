@@ -299,6 +299,17 @@ func GetRoot() *graphql.Object {
 				},
 				Resolve: res.IncreaseReviewDownvoteCount,
 			},
+
+			// Profile
+			"updateProfileInfo": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"newProfile": &graphql.ArgumentConfig{
+						Type: inp_typ.GetNewProfileInputType(),
+					},
+				},
+				Resolve: res.UpdateProfileInfo,
+			},
 		},
 	})
 }
