@@ -14,3 +14,31 @@ func UpdateProfileInfo(p graphql.ResolveParams) (i interface{}, e error){
 	isSuccess := user_profile.UpdateInfo(newProfile)
 	return isSuccess, nil
 }
+
+func UpdateProfileAvatar(p graphql.ResolveParams) (i interface{}, e error){
+	userId := p.Args["userId"].(int)
+	imageString := p.Args["imageString"].(string)
+	isSuccess := user_profile.UpdateAvatar(userId, imageString)
+	return isSuccess, nil
+}
+
+func UpdateProfilAvatarFrame(p graphql.ResolveParams) (i interface{}, e error){
+	userId := p.Args["userId"].(int)
+	avatarFrameUrl := p.Args["avatarFrameUrl"].(string)
+	isSuccess := user_profile.UpdateAvatarFrame(userId, avatarFrameUrl)
+	return isSuccess, nil
+}
+
+func UpdateProfileBackground(p graphql.ResolveParams) (i interface{}, e error){
+	userId := p.Args["userId"].(int)
+	profileBackgroundUrl := p.Args["profileBackgroundUrl"].(string)
+	isSuccess := user_profile.UpdateBackground(userId, profileBackgroundUrl)
+	return isSuccess, nil
+}
+
+func UpdateMiniProfileBackground(p graphql.ResolveParams) (i interface{}, e error){
+	userId := p.Args["userId"].(int)
+	miniProfileBackgroundUrl := p.Args["miniProfileBackgroundUrl"].(string)
+	isSuccess := user_profile.UpdateMiniBackground(userId, miniProfileBackgroundUrl)
+	return isSuccess, nil
+}

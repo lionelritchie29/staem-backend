@@ -310,6 +310,54 @@ func GetRoot() *graphql.Object {
 				},
 				Resolve: res.UpdateProfileInfo,
 			},
+			"updateProfileAvatar": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"imageString": &graphql.ArgumentConfig{
+						Type: graphql.String,
+					},
+				},
+				Resolve: res.UpdateProfileAvatar,
+			},
+			"updateProfileAvatarFrame": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"avatarFrameUrl": &graphql.ArgumentConfig{
+						Type: graphql.String,
+					},
+				},
+				Resolve: res.UpdateProfilAvatarFrame,
+			},
+			"updateProfileBackground": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"profileBackgroundUrl": &graphql.ArgumentConfig{
+						Type: graphql.String,
+					},
+				},
+				Resolve: res.UpdateProfileBackground,
+			},
+			"updateMiniProfileBackground": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"miniProfileBackgroundUrl": &graphql.ArgumentConfig{
+						Type: graphql.String,
+					},
+				},
+				Resolve: res.UpdateMiniProfileBackground,
+			},
 		},
 	})
 }

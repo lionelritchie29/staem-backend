@@ -136,7 +136,7 @@ func Create(newUser input_models.NewUserAccount) bool {
 		Point:                    1,
 		DisplayName:              userAccount.AccountName,
 		CustomURL:                userAccount.AccountName,
-		AvatarFrameUrl:           "default.jpg",
+		AvatarFrameUrl:           "1.png",
 		ProfilePictureUrl:        "default.jpg",
 		ProfileBackgroundUrl:     "default.jpg",
 		MiniProfileBackgroundUrl: "default.jpg",
