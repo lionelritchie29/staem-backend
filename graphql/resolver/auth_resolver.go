@@ -6,8 +6,7 @@ import (
 	"github.com/lionelritchie29/staem-backend/models/user"
 )
 
-func LoginResolver(p graphql.ResolveParams) (i interface{}, e error){
-	helpers.SendMail("testttt")
+func LoginResolver(p graphql.ResolveParams) (i interface{}, e error) {
 	accountName := p.Args["accountName"].(string)
 	password := p.Args["password"].(string)
 
@@ -22,7 +21,7 @@ func LoginResolver(p graphql.ResolveParams) (i interface{}, e error){
 	return nil, nil
 }
 
-func LogoutResolver(p graphql.ResolveParams) (i interface{}, e error){
+func LogoutResolver(p graphql.ResolveParams) (i interface{}, e error) {
 	id := p.Args["id"].(int)
 	if user.Logout(id) {
 		return true, nil

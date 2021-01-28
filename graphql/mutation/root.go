@@ -406,6 +406,28 @@ func GetRoot() *graphql.Object {
 				},
 				Resolve: res.CreateMiniProfileTransaction,
 			},
+
+			"createOTP": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"email": &graphql.ArgumentConfig{
+						Type: graphql.String,
+					},
+					"accountName": &graphql.ArgumentConfig{
+						Type: graphql.String,
+					},
+				},
+				Resolve: res.CreateOTP,
+			},
+			"verifyOTP": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"code": &graphql.ArgumentConfig{
+						Type: graphql.String,
+					},
+				},
+				Resolve: res.VerifyOTP,
+			},
 		},
 	})
 }
