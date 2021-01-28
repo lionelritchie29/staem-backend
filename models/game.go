@@ -208,6 +208,67 @@ func (p *Game) seed(db *gorm.DB) {
 		UpdatedAt:   time.Time{},
 		DeletedAt:   nil,
 	})
+
+	//
+	db.Create(&Game{
+		Publisher:   2,
+		Developer:   1,
+		Title:       "Agent Murphy",
+		Description: "Agent Murphy is a fast-paced, hardcore platformer, side-scrolling action shooter.",
+		Price:       17499,
+		ReleaseDate: "2021-01-20",
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&Game{
+		Publisher:   2,
+		Developer:   4,
+		Title:       "Deep Despair",
+		Description: "Deep Despair is a Minecraft-style survival sandbox. Travel, collect resources, craft items, dig, build, grow crops and survive. Freedom of action is limited only by your imagination!",
+		Price:       11999,
+		ReleaseDate: "2019-09-24",
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&Game{
+		Publisher:   5,
+		Developer:   2,
+		Title:       "Ostrich Runner",
+		Description: "Ostrich Runner – is the fascinating animated arcade racing where the main heroes are funny and a little bit crazy ostriches.",
+		Price:       52999,
+		ReleaseDate: "2005-02-30",
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&Game{
+		Publisher:   6,
+		Developer:   3,
+		Title:       "Dead Cells",
+		Description: "Dead Cells is a rogue-lite, metroidvania inspired, action-platformer. You'll explore a sprawling, ever-changing castle... assuming you’re able to fight your way past its keepers in 2D souls-lite combat. No checkpoints. Kill, die, learn, repeat.",
+		Price:       149999,
+		ReleaseDate: "2108-08-19",
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&Game{
+		Publisher:   2,
+		Developer:   5,
+		Title:       "Night of the Dead",
+		Description: "Build defenses against nightly waves of zombies. Survive and escape the island.",
+		Price:       119999,
+		ReleaseDate: "2020-08-28",
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
 }
 
 

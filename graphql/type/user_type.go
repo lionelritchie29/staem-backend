@@ -3,6 +3,7 @@ package _type
 import (
 	"github.com/graphql-go/graphql"
 	"github.com/lionelritchie29/staem-backend/models"
+	"github.com/lionelritchie29/staem-backend/models/game_item"
 	"github.com/lionelritchie29/staem-backend/models/user"
 )
 
@@ -56,6 +57,14 @@ func GetUserType() *graphql.Object{
 						userAcc := params.Source.(models.UserAccount)
 						profile := user.GetProfile(int(userAcc.ID))
 						return profile, nil
+					},
+				},
+				"inventory": &graphql.Field{
+					Type: graphql.NewList(GetGameItemType()),
+					Resolve: func(params graphql.ResolveParams) (interface{}, error) {
+						userAcc := params.Source.(models.UserAccount)
+						inventory := game_item.GetByUserId(int(userAcc.ID))
+						return inventory, nil
 					},
 				},
 			},

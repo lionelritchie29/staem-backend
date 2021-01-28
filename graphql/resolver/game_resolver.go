@@ -3,6 +3,7 @@ package resolver
 import (
 	"github.com/graphql-go/graphql"
 	"github.com/lionelritchie29/staem-backend/input_models"
+	"github.com/lionelritchie29/staem-backend/models"
 	"github.com/lionelritchie29/staem-backend/models/game"
 	"github.com/mitchellh/mapstructure"
 )
@@ -12,9 +13,27 @@ func GetGames(p graphql.ResolveParams) (i interface{}, e error) {
 	return games, nil
 }
 
-func GetGamesByTitle(p graphql.ResolveParams) (i interface{}, e error) {
+func GetGamesLimitOffset(p graphql.ResolveParams) (i interface{}, e error) {
+	limit := p.Args["limit"].(int)
+	offset := p.Args["offset"].(int)
+
+	games := game.GetAllLimitOffset(offset, limit)
+	totalCount := game.GetCount()
+
+	gamePaginate := models.GamePaginate{
+		TotalCount: totalCount,
+		Games:      games,
+	}
+
+	return gamePaginate, nil
+}
+
+func GetGamesByTitleLimitOffset(p graphql.ResolveParams) (i interface{}, e error) {
 	searchQuery := p.Args["query"].(string)
-	games := game.GetByTitle(searchQuery)
+	limit := p.Args["limit"].(int)
+	offset := p.Args["offset"].(int)
+
+	games := game.GetByTitleLimitOffset(searchQuery, limit, offset)
 	return games, nil
 }
 

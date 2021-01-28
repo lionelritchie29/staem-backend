@@ -28,10 +28,10 @@ func init() {
 }
 
 func (p *GameTransactionDetail) seed(db *gorm.DB) {
-	for i := 0; i < 200; i++ {
+	for i := 0; i < 225; i++ {
 		db.Create(&GameTransactionDetail{
 			GameTransactionID: uint(rand.Intn(100) + 1),
-			Game:    rand.Intn(15) + 1,
+			Game:    rand.Intn(20) + 1,
 			Price: rand.Intn(1099999) + 169999,
 			Quantity:  rand.Intn(20) + 1,
 			CreatedAt: time.Time{},

@@ -666,4 +666,217 @@ func (p *GameImage) seed(db *gorm.DB) {
 		UpdatedAt: time.Time{},
 		DeletedAt: nil,
 	})
+
+	//
+	db.Create(&GameImage{
+		GameID:    16,
+		Url:       "1.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameImage{
+		GameID:    16,
+		Url:       "2.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameImage{
+		GameID:    16,
+		Url:       "3.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameImage{
+		GameID:    16,
+		Url:       "4.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameImage{
+		GameID:    16,
+		Url:       "5.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameImage{
+		GameID:    16,
+		Url:       "header.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	//
+	db.Create(&GameImage{
+		GameID:    17,
+		Url:       "1.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameImage{
+		GameID:    17,
+		Url:       "2.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameImage{
+		GameID:    17,
+		Url:       "3.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameImage{
+		GameID:    17,
+		Url:       "4.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameImage{
+		GameID:    17,
+		Url:       "header.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	//
+	db.Create(&GameImage{
+		GameID:    18,
+		Url:       "1.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameImage{
+		GameID:    18,
+		Url:       "2.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameImage{
+		GameID:    18,
+		Url:       "3.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameImage{
+		GameID:    18,
+		Url:       "4.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameImage{
+		GameID:    18,
+		Url:       "header.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	//
+	db.Create(&GameImage{
+		GameID:    19,
+		Url:       "1.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameImage{
+		GameID:    19,
+		Url:       "2.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameImage{
+		GameID:    19,
+		Url:       "3.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameImage{
+		GameID:    19,
+		Url:       "4.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameImage{
+		GameID:    19,
+		Url:       "header.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	//
+	db.Create(&GameImage{
+		GameID:    20,
+		Url:       "1.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameImage{
+		GameID:    20,
+		Url:       "2.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameImage{
+		GameID:    20,
+		Url:       "3.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameImage{
+		GameID:    20,
+		Url:       "4.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&GameImage{
+		GameID:    20,
+		Url:       "header.jpg",
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
 }

@@ -48,7 +48,7 @@ func (p *GameReview) seed(db *gorm.DB) {
 
 		db.Create(&GameReview{
 			IsRecommended: 	isRecommended,
-			GameID:         uint( rand.Intn(15) + 1 ),
+			GameID:         uint( rand.Intn(20) + 1 ),
 			UserID:         uint( rand.Intn(10) + 1 ),
 			Content:        faker.Lorem().Paragraph(rand.Intn(10) + 3),
 			UpvoteCount:    rand.Intn(100 + 1 ),

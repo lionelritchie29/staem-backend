@@ -109,4 +109,13 @@ func (p *GameSale) seed(db *gorm.DB) {
 		DeletedAt: nil,
 	})
 
+	db.Create(&GameSale{
+		GameID:    19,
+		Discount:  45,
+		ValidTo:   faker.Time().Between(startDate, time.Now()),
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
 }

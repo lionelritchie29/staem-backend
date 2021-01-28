@@ -36,7 +36,7 @@ func init() {
 
 func (p *GameTransactionHeader) seed(db *gorm.DB) {
 
-	for i := 0; i < 100; i++ {
+	for i := 0; i < 120; i++ {
 		startDate := time.Date(2020, time.August, 17, 12, 0, 0, 0, time.UTC)
 		db.Create(&GameTransactionHeader{
 			PaymentMethod:   rand.Intn(3) + 1,

@@ -47,4 +47,20 @@ func (p *UserWishlist) seed(db *gorm.DB) {
 		UpdatedAt: time.Time{},
 		DeletedAt: nil,
 	})
+
+	db.Create(&UserWishlist{
+		UserID:    3,
+		GameID:    5,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
+
+	db.Create(&UserWishlist{
+		UserID:    3,
+		GameID:    7,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	})
 }

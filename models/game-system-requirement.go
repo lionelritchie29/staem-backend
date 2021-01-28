@@ -35,7 +35,7 @@ func init() {
 }
 
 func (p *GameSystemRequirement) seed(db *gorm.DB) {
-	for i := 1; i <=15; i++  {
+	for i := 1; i <=20; i++  {
 		db.Create(&GameSystemRequirement{
 			GameID:          uint(i),
 			IsRecommended: true,

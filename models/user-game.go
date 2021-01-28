@@ -7,9 +7,9 @@ import (
 	"time"
 )
 
-type UserGame struct{
-	UserID uint `gorm:"primaryKey"`
-	GameID uint `gorm:"primaryKey"`
+type UserGame struct {
+	UserID    uint `gorm:"primaryKey"`
+	GameID    uint `gorm:"primaryKey"`
 	CreatedAt time.Time
 	UpdatedAt time.Time
 	DeletedAt *time.Time `gorm:"index"`
@@ -25,21 +25,29 @@ func init() {
 }
 
 func (p *UserGame) seed(db *gorm.DB) {
-	for i:=1; i<=10; i++ {
+	for i := 1; i <= 10; i++ {
 		skipCount := rand.Intn(5) + 1
-		for j:=1; j<=15; j+=skipCount {
-			if j == i {
-				continue
-			} else {
-				db.Create(&UserGame{
-					UserID:    uint(i),
-					GameID:  uint(j),
-					CreatedAt: time.Time{},
-					UpdatedAt: time.Time{},
-					DeletedAt: nil,
+		for j := 1; j <= 20; j += skipCount {
+			db.Create(&UserGame{
+				UserID:    uint(i),
+				GameID:    uint(j),
+				CreatedAt: time.Time{},
+				UpdatedAt: time.Time{},
+				DeletedAt: nil,
+			})
+
+			skipCount2 := rand.Intn(2) + 1
+			for k := 1; k <= 10; k += skipCount2 {
+				db.Create(&UserGameItem{
+					UserID:     uint(i),
+					GameItemID: uint((j-1) * 10 + k),
+					CreatedAt:  time.Time{},
+					UpdatedAt:  time.Time{},
+					DeletedAt:  nil,
 				})
 			}
+
 		}
+
 	}
 }
-

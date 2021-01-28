@@ -12,6 +12,13 @@ import (
 	"time"
 )
 
+func GetCount() int {
+	db := database.GetInstance()
+	var games []models.Game
+	res := db.Find(&games)
+	return int(res.RowsAffected)
+}
+
 func GetAll() []models.Game {
 	db := database.GetInstance()
 	var games []models.Game
@@ -21,10 +28,22 @@ func GetAll() []models.Game {
 	return games
 }
 
-func GetByTitle(query string) []models.Game {
+func GetAllLimitOffset(offset, limit int) []models.Game {
 	db := database.GetInstance()
 	var games []models.Game
-	db.Raw("SELECT * FROM games WHERE LOWER(title) LIKE LOWER('%" + query + "%')").Scan(&games)
+
+	db.Limit(limit).Offset(offset).Find(&games)
+
+	return games
+}
+
+func GetByTitleLimitOffset(query string, limit, offset int) []models.Game {
+	limitStr := strconv.FormatInt(int64(limit), 10)
+	offsetStr := strconv.FormatInt(int64(offset), 10)
+
+	db := database.GetInstance()
+	var games []models.Game
+	db.Debug().Raw("SELECT * FROM games WHERE LOWER(title) LIKE LOWER('%" + query + "%') LIMIT " + limitStr + " OFFSET " + offsetStr).Scan(&games)
 	return games
 }
 
