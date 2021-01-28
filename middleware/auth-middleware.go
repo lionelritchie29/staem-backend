@@ -1,11 +1,11 @@
 package middleware
 
 import (
-	"github.com/lionelritchie29/learn-gql-go/model"
+	"context"
 	"github.com/lionelritchie29/staem-backend/database"
 	"github.com/lionelritchie29/staem-backend/helpers"
+	"github.com/lionelritchie29/staem-backend/models"
 	"net/http"
-	"context"
 )
 
 type authContextKey struct {
@@ -14,8 +14,8 @@ type authContextKey struct {
 
 var authCtx = &authContextKey{"user"}
 
-func Auth() func(http.Handler) http.Handler{
-	return func(next http.Handler) http.Handler {
+
+func Auth(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			header := r.Header.Get("Authorization")
 
@@ -33,14 +33,12 @@ func Auth() func(http.Handler) http.Handler{
 			}
 
 			db := database.GetInstance()
-			defer db.Close()
 
-			var loggedUser model.User
+			var loggedUser models.UserAccount
 			db.Find(&loggedUser, userId)
 
-			ctx := context.WithValue(r.Context(), authCtx, &loggedUser)
+			ctx := context.WithValue(r.Context(), "loggedUser", &loggedUser)
 			r = r.WithContext(ctx)
 			next.ServeHTTP(w, r)
 		})
-	}
 }

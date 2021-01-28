@@ -6,6 +6,7 @@ import (
 	"github.com/lionelritchie29/staem-backend/api"
 	"github.com/lionelritchie29/staem-backend/graphql/mutation"
 	"github.com/lionelritchie29/staem-backend/graphql/query"
+	"github.com/lionelritchie29/staem-backend/graphql/subscription"
 	"github.com/lionelritchie29/staem-backend/helpers"
 	"github.com/lionelritchie29/staem-backend/middleware"
 	"log"
@@ -13,25 +14,27 @@ import (
 	"os"
 )
 
-func main(){
+func main() {
 	helpers.SetEnv()
 	schema, err := graphql.NewSchema(graphql.SchemaConfig{
-		Query: query.GetRoot(),
-		Mutation: mutation.GetRoot(),
+		Query:        query.GetRoot(),
+		Mutation:     mutation.GetRoot(),
+		Subscription: subscription.GetRoot(),
 	})
 
-	if err != nil{
+	if err != nil {
 		panic(err)
 	}
 
+
 	h := handler.New(&handler.Config{
-		Schema: &schema,
-		Pretty: true,
-		GraphiQL: false,
+		Schema:     &schema,
+		Pretty:     true,
+		GraphiQL:   false,
 		Playground: true,
 	})
 
-	wrapped:= middleware.CorsMiddleware(h)
+	wrapped := middleware.CorsMiddleware(h)
 
 	router := api.NewRouter()
 
@@ -48,4 +51,3 @@ func main(){
 
 	log.Fatalln(http.ListenAndServe(":2000", router))
 }
-

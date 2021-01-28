@@ -39,7 +39,7 @@ func init() {
 func (p *UserProfile) seed(db *gorm.DB) {
 	db.Create(&UserProfile{
 		Level:                    99,
-		Point:                    999,
+		Point:                    9999,
 		DisplayName:              "Gomay",
 		RealName:                 "Lionel Ritchie",
 		CustomURL:                "lionelskuy",
@@ -48,7 +48,7 @@ func (p *UserProfile) seed(db *gorm.DB) {
 		ProfileBackgroundUrl:     "1.jpg",
 		MiniProfileBackgroundUrl: "1.jpg",
 		Summary:                  faker.Lorem().Sentence(15),
-		Theme:                    "#999999",
+		Theme:                    "#222431",
 		FeaturedBadgeUrl:         "1.jpg",
 		Country:                  "United States of America",
 		CreatedAt:                time.Time{},
@@ -58,7 +58,7 @@ func (p *UserProfile) seed(db *gorm.DB) {
 
 	db.Create(&UserProfile{
 		Level:                    29,
-		Point:                    299,
+		Point:                    1499,
 		DisplayName:              "Cindy Margareta",
 		RealName:                 "Cindy Margareta",
 		CustomURL:                "cindymargaretz",
@@ -67,7 +67,7 @@ func (p *UserProfile) seed(db *gorm.DB) {
 		ProfileBackgroundUrl:     "1.jpg",
 		MiniProfileBackgroundUrl: "1.jpg",
 		Summary:                  faker.Lorem().Sentence(15),
-		Theme:                    "#CCCCCC",
+		Theme:                    "#222431",
 		FeaturedBadgeUrl:         "2.jpg",
 		Country:                  "United States of America",
 		CreatedAt:                time.Time{},
@@ -77,7 +77,7 @@ func (p *UserProfile) seed(db *gorm.DB) {
 
 	db.Create(&UserProfile{
 		Level:                    15,
-		Point:                    499,
+		Point:                    1000,
 		DisplayName:              "Arthur Morgan",
 		RealName:                 "Arthur Morgan",
 		CustomURL:                "arthurz",
@@ -86,7 +86,7 @@ func (p *UserProfile) seed(db *gorm.DB) {
 		ProfileBackgroundUrl:     "1.jpg",
 		MiniProfileBackgroundUrl: "1.jpg",
 		Summary:                  faker.Lorem().Sentence(15),
-		Theme:                    "#CCCCCC",
+		Theme:                    "#222431",
 		FeaturedBadgeUrl:         "3.jpg",
 		Country:                  "United States of America",
 		CreatedAt:                time.Time{},
@@ -96,7 +96,7 @@ func (p *UserProfile) seed(db *gorm.DB) {
 
 	db.Create(&UserProfile{
 		Level:                    15,
-		Point:                    499,
+		Point:                    2500,
 		DisplayName:              "Abigail Roberts",
 		RealName:                 "Abigail Roberts",
 		CustomURL:                "abigailz",
@@ -105,7 +105,7 @@ func (p *UserProfile) seed(db *gorm.DB) {
 		ProfileBackgroundUrl:     "1.jpg",
 		MiniProfileBackgroundUrl: "1.jpg",
 		Summary:                  faker.Lorem().Sentence(15),
-		Theme:                    "#CCCCCC",
+		Theme:                    "#222431",
 		FeaturedBadgeUrl:         "4.jpg",
 		Country:                  "United States of America",
 		CreatedAt:                time.Time{},
@@ -115,7 +115,7 @@ func (p *UserProfile) seed(db *gorm.DB) {
 
 	db.Create(&UserProfile{
 		Level:                    23,
-		Point:                    799,
+		Point:                    2750,
 		DisplayName:              "Aloy Dawn",
 		RealName:                 "Aloy Dawn",
 		CustomURL:                "aloyz",
@@ -124,7 +124,7 @@ func (p *UserProfile) seed(db *gorm.DB) {
 		ProfileBackgroundUrl:     "1.jpg",
 		MiniProfileBackgroundUrl: "1.jpg",
 		Summary:                  faker.Lorem().Sentence(15),
-		Theme:                    "#CCCCCC",
+		Theme:                    "#222431",
 		FeaturedBadgeUrl:         "5.jpg",
 		Country:                  "United States of America",
 		CreatedAt:                time.Time{},
@@ -143,7 +143,7 @@ func (p *UserProfile) seed(db *gorm.DB) {
 		ProfileBackgroundUrl:     "1.jpg",
 		MiniProfileBackgroundUrl: "1.jpg",
 		Summary:                  faker.Lorem().Sentence(15),
-		Theme:                    "#CCCCCC",
+		Theme:                    "#222431",
 		FeaturedBadgeUrl:         "6.jpg",
 		Country:                  "United States of America",
 		CreatedAt:                time.Time{},
@@ -153,7 +153,7 @@ func (p *UserProfile) seed(db *gorm.DB) {
 
 	db.Create(&UserProfile{
 		Level:                    59,
-		Point:                    1345,
+		Point:                    1855,
 		DisplayName:              "Hosea Matthews",
 		RealName:                 "Hosea Matthews",
 		CustomURL:                "hoseaz",
@@ -162,7 +162,7 @@ func (p *UserProfile) seed(db *gorm.DB) {
 		ProfileBackgroundUrl:     "1.jpg",
 		MiniProfileBackgroundUrl: "1.jpg",
 		Summary:                  faker.Lorem().Sentence(15),
-		Theme:                    "#CCCCCC",
+		Theme:                    "#222431",
 		FeaturedBadgeUrl:         "7.jpg",
 		Country:                  "United States of America",
 		CreatedAt:                time.Time{},
@@ -172,7 +172,7 @@ func (p *UserProfile) seed(db *gorm.DB) {
 
 	db.Create(&UserProfile{
 		Level:                    65,
-		Point:                    461,
+		Point:                    1497,
 		DisplayName:              "Patrick Star",
 		RealName:                 "Patrick Star",
 		CustomURL:                "patrickz",
@@ -181,7 +181,7 @@ func (p *UserProfile) seed(db *gorm.DB) {
 		ProfileBackgroundUrl:     "1.jpg",
 		MiniProfileBackgroundUrl: "1.jpg",
 		Summary:                  faker.Lorem().Sentence(15),
-		Theme:                    "#CCCCCC",
+		Theme:                    "#222431",
 		FeaturedBadgeUrl:         "8.jpg",
 		Country:                  "United States of America",
 		CreatedAt:                time.Time{},
@@ -191,7 +191,7 @@ func (p *UserProfile) seed(db *gorm.DB) {
 
 	db.Create(&UserProfile{
 		Level:                    87,
-		Point:                    1547,
+		Point:                    1555,
 		DisplayName:              "Spongebob Squarepants",
 		RealName:                 "Spongebob Squarepants",
 		CustomURL:                "spongebobz",
@@ -200,7 +200,7 @@ func (p *UserProfile) seed(db *gorm.DB) {
 		ProfileBackgroundUrl:     "1.jpg",
 		MiniProfileBackgroundUrl: "1.jpg",
 		Summary:                  faker.Lorem().Sentence(15),
-		Theme:                    "#CCCCCC",
+		Theme:                    "#222431",
 		FeaturedBadgeUrl:         "9.jpg",
 		Country:                  "United States of America",
 		CreatedAt:                time.Time{},
@@ -219,7 +219,7 @@ func (p *UserProfile) seed(db *gorm.DB) {
 		ProfileBackgroundUrl:     "1.jpg",
 		MiniProfileBackgroundUrl: "1.jpg",
 		Summary:                  faker.Lorem().Sentence(15),
-		Theme:                    "#CCCCCC",
+		Theme:                    "#222431",
 		FeaturedBadgeUrl:         "10.jpg",
 		Country:                  "United States of America",
 		CreatedAt:                time.Time{},
@@ -239,7 +239,7 @@ func (p *UserProfile) seed(db *gorm.DB) {
 		ProfileBackgroundUrl:     "1.jpg",
 		MiniProfileBackgroundUrl: "admin.jpg",
 		Summary:                  "admin",
-		Theme:                    "#CCCCCC",
+		Theme:                    "#222431",
 		FeaturedBadgeUrl:         "admin.jpg",
 		Country:                  "Admin gapunya negara :D",
 		CreatedAt:                time.Time{},
@@ -258,7 +258,7 @@ func (p *UserProfile) seed(db *gorm.DB) {
 		ProfileBackgroundUrl:     "1.jpg",
 		MiniProfileBackgroundUrl: "admin.jpg",
 		Summary:                  "admin",
-		Theme:                    "#CCCCCC",
+		Theme:                    "#222431",
 		FeaturedBadgeUrl:         "admin.jpg",
 		Country:                  "Admin gapunya negara :D",
 		CreatedAt:                time.Time{},
@@ -277,7 +277,7 @@ func (p *UserProfile) seed(db *gorm.DB) {
 		ProfileBackgroundUrl:     "1.jpg",
 		MiniProfileBackgroundUrl: "admin.jpg",
 		Summary:                  "admin",
-		Theme:                    "#CCCCCC",
+		Theme:                    "#222431",
 		FeaturedBadgeUrl:         "admin.jpg",
 		Country:                  "Admin gapunya negara :D",
 		CreatedAt:                time.Time{},

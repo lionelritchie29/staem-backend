@@ -140,7 +140,7 @@ func Create(newUser input_models.NewUserAccount) bool {
 		ProfilePictureUrl:        "default.jpg",
 		ProfileBackgroundUrl:     "default.jpg",
 		MiniProfileBackgroundUrl: "default.jpg",
-		Theme:                    "default.jpg",
+		Theme:                    "#222431",
 		FeaturedBadgeUrl:         "default.jpg",
 		Country:                  newUser.Country,
 		CreatedAt:                time.Time{},

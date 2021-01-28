@@ -8,6 +8,7 @@ import(
 func NewRouter() *mux.Router{
 	r:= mux.NewRouter()
 	r.Use(middleware.LogMiddleware)
+	r.Use(middleware.Auth)
 
 	return r
 }

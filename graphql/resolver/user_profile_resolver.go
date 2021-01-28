@@ -42,3 +42,10 @@ func UpdateMiniProfileBackground(p graphql.ResolveParams) (i interface{}, e erro
 	isSuccess := user_profile.UpdateMiniBackground(userId, miniProfileBackgroundUrl)
 	return isSuccess, nil
 }
+
+func UpdateProfileTheme(p graphql.ResolveParams) (i interface{}, e error){
+	userId := p.Args["userId"].(int)
+	hexCode := p.Args["hexCode"].(string)
+	isSuccess := user_profile.UpdateTheme(userId, hexCode)
+	return isSuccess, nil
+}

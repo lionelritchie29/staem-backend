@@ -29,8 +29,8 @@ func ParseToken(tokenStr string) (int, error) {
 	})
 
 	if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
-		userId := claims["userid"].(int)
-		return userId, nil
+		userId := claims["userId"].(float64)
+		return int(userId), nil
 	} else {
 		return -1, err
 	}

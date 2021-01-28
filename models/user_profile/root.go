@@ -87,3 +87,17 @@ func UpdateMiniBackground(userId int, miniProfileBackgroundUrl string) bool {
 
 	return true
 }
+
+func UpdateTheme(userId int, hexCode string) bool {
+	db := database.GetInstance()
+	var profile models.UserProfile
+	db.Find(&profile, userId)
+	profile.Theme = hexCode
+	saveProfile := db.Save(&profile)
+
+	if saveProfile.Error != nil {
+		return false
+	}
+
+	return true
+}

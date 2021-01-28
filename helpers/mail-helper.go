@@ -1,38 +1,34 @@
 package helpers
 
 import (
-	"fmt"
-	mailjet "github.com/mailjet/mailjet-apiv3-go"
-	log "log"
-	"os"
+	"log"
+	"net/smtp"
 )
 
-func SendEmail(name, email, message string) {
-	fmt.Println(os.Getenv("MAILJET_PUBLIC_API_KEY"))
-	fmt.Println(os.Getenv("MAILJET_PRIVATE_API_KEY"))
-	mailjetClient := mailjet.NewMailjetClient(os.Getenv("MAILJET_PUBLIC_API_KEY"), os.Getenv("MAILJET_PRIVATE_API_KEY"))
-	messagesInfo := []mailjet.InfoMessagesV31 {
-		mailjet.InfoMessagesV31{
-			From: &mailjet.RecipientV31{
-				Email: "lionel.ritchie@yahoo.com",
-				Name: "Lionel",
-			},
-			To: &mailjet.RecipientsV31{
-				mailjet.RecipientV31 {
-					Email: email,
-					Name: name,
-				},
-			},
-			Subject: "Greetings from Mailjet.",
-			TextPart: message,
-			HTMLPart: "<h3> " + message + " </h3>",
-			CustomID: "AppGettingStartedTest",
-		},
-	}
-	messages := mailjet.MessagesV31{Info: messagesInfo }
-	res, err := mailjetClient.SendMailV31(&messages)
+const CONFIG_SMTP_HOST = "smtp.gmail.com"
+const CONFIG_SMTP_PORT = 587
+const CONFIG_SENDER_NAME = "PT. Makmur Subur Jaya <store.staempowered@gmail.com>"
+const CONFIG_AUTH_EMAIL = "store.staempowered@gmail.com"
+const CONFIG_AUTH_PASSWORD = "darrowred29"
+
+func SendMail(body string) {
+	from := "store.staempowered@gmail.com"
+	pass := "zwhrruqnoyhebgea"
+	to := "lionelrtchieee@gmail.com"
+
+	msg := "From: " + from + "\n" +
+		"To: " + to + "\n" +
+		"Subject: Hello there\n\n" +
+		body
+
+	err := smtp.SendMail("smtp.gmail.com:587",
+		smtp.PlainAuth("", from, pass, "smtp.gmail.com"),
+		from, []string{to}, []byte(msg))
+
 	if err != nil {
-		log.Fatal(err)
+		log.Printf("smtp error: %s", err)
+		return
 	}
-	fmt.Printf("Data: %+v\n", res)
+
+	log.Print("sent, visit http://foobarbazz.mailinator.com")
 }

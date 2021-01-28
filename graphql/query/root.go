@@ -306,6 +306,18 @@ func GetRoot() *graphql.Object{
 				},
 				Resolve: res.GetMiniProfileBackgroundByUserId,
 			},
+			"avatarFrames": &graphql.Field{
+				Type: graphql.NewList(typ.GetAvatarFrameType()),
+				Resolve: res.GetAvatarFrames,
+			},
+			"profileBackgrounds": &graphql.Field{
+				Type: graphql.NewList(typ.GetProfileBackgroundType()),
+				Resolve: res.GetAllProfileBackground,
+			},
+			"miniProfileBackgrounds": &graphql.Field{
+				Type: graphql.NewList(typ.GetMiniProfileBackgroundType()),
+				Resolve: res.GetAllMiniProfileBackgrounds,
+			},
 		},
 	})
 }

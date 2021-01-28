@@ -358,6 +358,54 @@ func GetRoot() *graphql.Object {
 				},
 				Resolve: res.UpdateMiniProfileBackground,
 			},
+			"updateProfileTheme": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"hexCode": &graphql.ArgumentConfig{
+						Type: graphql.String,
+					},
+				},
+				Resolve: res.UpdateProfileTheme,
+			},
+			"createAvatarFrameTransaction": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"itemId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.CreateAvatarFrameTransaction,
+			},
+			"createProfileBgTransaction": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"itemId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.CreateProfileBgTransaction,
+			},
+			"createMiniProfileTransaction": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"itemId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.CreateMiniProfileTransaction,
+			},
 		},
 	})
 }

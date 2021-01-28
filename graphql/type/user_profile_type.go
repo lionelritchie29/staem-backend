@@ -1,6 +1,12 @@
 package _type
 
-import "github.com/graphql-go/graphql"
+import (
+	"github.com/graphql-go/graphql"
+	"github.com/lionelritchie29/staem-backend/models"
+	"github.com/lionelritchie29/staem-backend/models/avatar_frame"
+	"github.com/lionelritchie29/staem-backend/models/mini_profile"
+	"github.com/lionelritchie29/staem-backend/models/profile_background"
+)
 
 var profileType *graphql.Object
 
@@ -47,6 +53,30 @@ func GetUserProfileType() *graphql.Object {
 				},
 				"country": &graphql.Field{
 					Type: graphql.String,
+				},
+				"avatarFrames": &graphql.Field{
+					Type: graphql.NewList(GetAvatarFrameType()),
+					Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+						parent := p.Source.(models.UserProfile)
+						frames := avatar_frame.GetByUserId(int(parent.ID))
+						return frames, nil
+					},
+				},
+				"profileBackgrounds": &graphql.Field{
+					Type: graphql.NewList(GetProfileBackgroundType()),
+					Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+						parent := p.Source.(models.UserProfile)
+						bg := profile_background.GetByUserId(int(parent.ID))
+						return bg, nil
+					},
+				},
+				"miniProfileBackgrounds": &graphql.Field{
+					Type: graphql.NewList(GetMiniProfileBackgroundType()),
+					Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+						parent := p.Source.(models.UserProfile)
+						bg := mini_profile.GetByUserId(int(parent.ID))
+						return bg, nil
+					},
 				},
 			},
 		})
