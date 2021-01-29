@@ -45,7 +45,7 @@ func (p *GameItem) seed(db *gorm.DB) {
 				Name:      faker.App().Name(),
 				Game:      i,
 				GameItemCategory: rand.Intn(10) + 1,
-				Image:     strconv.FormatInt(int64(j), 10) + ".jpg",
+				Image:     strconv.FormatInt(int64(j), 10) + ".png",
 				Description: faker.Lorem().Sentence(8),
 				CreatedAt: time.Time{},
 				UpdatedAt: time.Time{},

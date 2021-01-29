@@ -1,6 +1,5 @@
 package query
 
-
 import (
 	"github.com/graphql-go/graphql"
 	res "github.com/lionelritchie29/staem-backend/graphql/resolver"
@@ -335,6 +334,19 @@ func GetRoot() *graphql.Object{
 			"miniProfileBackgrounds": &graphql.Field{
 				Type: graphql.NewList(typ.GetMiniProfileBackgroundType()),
 				Resolve: res.GetAllMiniProfileBackgrounds,
+			},
+
+			"chats": &graphql.Field{
+				Type: graphql.NewList(typ.GetChatMessageType()),
+				Args: graphql.FieldConfigArgument{
+					"senderId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"recipientId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.GetChats,
 			},
 		},
 	})

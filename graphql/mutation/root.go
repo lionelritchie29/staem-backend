@@ -2,9 +2,9 @@ package mutation
 
 import (
 	"github.com/graphql-go/graphql"
+	inp_typ "github.com/lionelritchie29/staem-backend/graphql/input_type"
 	res "github.com/lionelritchie29/staem-backend/graphql/resolver"
 	typ "github.com/lionelritchie29/staem-backend/graphql/type"
-	inp_typ "github.com/lionelritchie29/staem-backend/graphql/input_type"
 )
 
 func GetRoot() *graphql.Object {
@@ -194,7 +194,6 @@ func GetRoot() *graphql.Object {
 					"content": &graphql.ArgumentConfig{
 						Type: graphql.String,
 					},
-
 				},
 				Resolve: res.CreateComment,
 			},
@@ -427,6 +426,21 @@ func GetRoot() *graphql.Object {
 					},
 				},
 				Resolve: res.VerifyOTP,
+			},
+			"addChatMessage": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"senderId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"recipientId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"message": &graphql.ArgumentConfig{
+						Type: graphql.String,
+					},
+				},
+				Resolve: res.CreateChat,
 			},
 		},
 	})
