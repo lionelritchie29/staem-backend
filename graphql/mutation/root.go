@@ -442,6 +442,24 @@ func GetRoot() *graphql.Object {
 				},
 				Resolve: res.CreateChat,
 			},
+			"createSellListing": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"gameItemId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"price": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"quantity": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.CreateSellListing,
+			},
 		},
 	})
 }

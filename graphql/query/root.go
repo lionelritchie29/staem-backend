@@ -353,12 +353,28 @@ func GetRoot() *graphql.Object{
 				Type: graphql.NewList(typ.GetMarketTransactionType()),
 				Resolve: res.GetSellListings,
 			},
-
+			"sellListingGroupedByPrice": &graphql.Field{
+				Type: graphql.NewList(typ.GetMarketSellListingGroupedByPrice()),
+				Args: graphql.FieldConfigArgument{
+					"gameItemId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.GetSellListingsGroupedByPrice,
+			},
 			"buyListings": &graphql.Field{
 				Type: graphql.NewList(typ.GetMarketTransactionType()),
 				Resolve: res.GetBuyListings,
 			},
-
+			"buyListingGroupedByPrice": &graphql.Field{
+				Type: graphql.NewList(typ.GetMarketSellListingGroupedByPrice()),
+				Args: graphql.FieldConfigArgument{
+					"gameItemId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.GetBuyListingsGroupedByPrice,
+			},
 			"sellListingsPaginate": &graphql.Field{
 				Type: typ.GetMarketSellListingPaginateType(),
 				Args: graphql.FieldConfigArgument{
@@ -370,6 +386,41 @@ func GetRoot() *graphql.Object{
 					},
 				},
 				Resolve: res.GetSellListingsPaginate,
+			},
+			"sellListingByUserAndGameItemId": &graphql.Field{
+				Type: graphql.NewList(typ.GetMarketTransactionType()),
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"gameItemId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.GetSellListingByUserIdAndGameId,
+			},
+			"buyListingByUserAndGameItemId": &graphql.Field{
+				Type: graphql.NewList(typ.GetMarketTransactionType()),
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"gameItemId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.GetBuyListingByUserIdAndGameId,
+			},
+
+
+			"gameItem": &graphql.Field{
+				Type: typ.GetGameItemType(),
+				Args: graphql.FieldConfigArgument{
+					"id": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.GetGameItemById,
 			},
 		},
 	})

@@ -22,3 +22,43 @@ func GetSellListingsPaginate(p graphql.ResolveParams) (interface{}, error) {
 	listings := market_transaction.GetPaginateSellListing(limit, offset)
 	return listings, nil
 }
+
+func GetSellListingsGroupedByPrice(p graphql.ResolveParams) (interface{}, error) {
+	gameItemId := p.Args["gameItemId"].(int)
+
+	listings := market_transaction.GetSellListingsGroupedByPrice(gameItemId)
+	return listings, nil
+}
+
+func GetBuyListingsGroupedByPrice(p graphql.ResolveParams) (interface{}, error) {
+	gameItemId := p.Args["gameItemId"].(int)
+
+	listings := market_transaction.GetBuyListingsGroupedByPrice(gameItemId)
+	return listings, nil
+}
+
+func GetSellListingByUserIdAndGameId(p graphql.ResolveParams) (interface{}, error) {
+	userId := p.Args["userId"].(int)
+	gameItemId := p.Args["gameItemId"].(int)
+
+	listings := market_transaction.GetSellListingByUserIdAndGameItemId(userId, gameItemId)
+	return listings, nil
+}
+
+func GetBuyListingByUserIdAndGameId(p graphql.ResolveParams) (interface{}, error) {
+	userId := p.Args["userId"].(int)
+	gameItemId := p.Args["gameItemId"].(int)
+
+	listings := market_transaction.GetBuyListingByUserIdAndGameItemId(userId, gameItemId)
+	return listings, nil
+}
+
+func CreateSellListing(p graphql.ResolveParams) (interface{}, error) {
+	userId := p.Args["userId"].(int)
+	gameItemId := p.Args["gameItemId"].(int)
+	price := p.Args["price"].(int)
+	quantity := p.Args["quantity"].(int)
+
+	isSuccess := market_transaction.CreateSellListing(userId, gameItemId, price, quantity)
+	return isSuccess, nil
+}
