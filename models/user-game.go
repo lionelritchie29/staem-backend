@@ -3,6 +3,7 @@ package models
 import (
 	"github.com/jinzhu/gorm"
 	"github.com/lionelritchie29/staem-backend/database"
+	"github.com/lionelritchie29/staem-backend/helpers"
 	"math/rand"
 	"time"
 )
@@ -45,6 +46,30 @@ func (p *UserGame) seed(db *gorm.DB) {
 					UpdatedAt:  time.Time{},
 					DeletedAt:  nil,
 				})
+				
+				if helpers.RandBool() == true {
+					db.Create(&MarketSellListing{
+						UserID:     uint(i),
+						GameItemID: uint((j-1) * 10 + k),
+						Price:      rand.Intn(30000) + 100,
+						Quantity:   rand.Intn(10) + 1,
+						CreatedAt:  time.Time{},
+						UpdatedAt:  time.Time{},
+						DeletedAt:  nil,
+					})
+				}
+
+				if helpers.RandBool() == true {
+					db.Create(&MarketBuyListing{
+						UserID:     uint(i),
+						GameItemID: uint(j),
+						Price:      rand.Intn(30000) + 100,
+						Quantity:   rand.Intn(10) + 1,
+						CreatedAt:  time.Time{},
+						UpdatedAt:  time.Time{},
+						DeletedAt:  nil,
+					})
+				}
 			}
 
 		}

@@ -348,6 +348,29 @@ func GetRoot() *graphql.Object{
 				},
 				Resolve: res.GetChats,
 			},
+
+			"sellListings": &graphql.Field{
+				Type: graphql.NewList(typ.GetMarketTransactionType()),
+				Resolve: res.GetSellListings,
+			},
+
+			"buyListings": &graphql.Field{
+				Type: graphql.NewList(typ.GetMarketTransactionType()),
+				Resolve: res.GetBuyListings,
+			},
+
+			"sellListingsPaginate": &graphql.Field{
+				Type: typ.GetMarketSellListingPaginateType(),
+				Args: graphql.FieldConfigArgument{
+					"offset": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"limit": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.GetSellListingsPaginate,
+			},
 		},
 	})
 }

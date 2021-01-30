@@ -16,3 +16,10 @@ func GetByUserId(userId int) ([]models.GameItem){
 			")").Scan(&items)
 	return items
 }
+
+func Get(id int) models.GameItem {
+	db := database.GetInstance()
+	var item models.GameItem
+	db.Find(&item, id)
+	return item
+}

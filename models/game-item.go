@@ -30,14 +30,6 @@ func init() {
 	p.seed(db)
 }
 
-func randBool() bool {
-	rInt := rand.Intn(2)
-	if rInt == 1 {
-		return  true
-	}
-	return false
-}
-
 func (p *GameItem) seed(db *gorm.DB) {
 	for i:=1; i<=20; i++ {
 		for j:=1; j<=10; j ++ {
