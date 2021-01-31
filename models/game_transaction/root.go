@@ -55,6 +55,9 @@ func AddTransaction(newTransaction input_models.NewGameTransaction) bool {
 		return false
 	}
 
+	var theUser models.UserAccount
+	db.Find(&theUser, newTransaction.User)
+
 	for _, detail := range newTransaction.Details {
 		resDetail := db.Create(&models.GameTransactionDetail{
 			GameTransactionID: header.ID,
@@ -66,11 +69,26 @@ func AddTransaction(newTransaction input_models.NewGameTransaction) bool {
 			DeletedAt:         nil,
 		})
 
-		if resDetail.Error != nil {
+		theUser.WalletAmount = theUser.WalletAmount - detail.Price
+
+		createUserGame := db.Create(&models.UserGame{
+			UserID:    uint(newTransaction.User),
+			GameID:    uint(detail.Game),
+			CreatedAt: time.Time{},
+			UpdatedAt: time.Time{},
+			DeletedAt: nil,
+		})
+
+		db.Save(&theUser)
+
+
+		if resDetail.Error != nil || createUserGame.Error != nil {
 			fmt.Println(resDetail.Error)
 			return false
 		}
 	}
+
+
 
 	return true
 }

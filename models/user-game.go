@@ -28,7 +28,7 @@ func init() {
 func (p *UserGame) seed(db *gorm.DB) {
 	for i := 1; i <= 10; i++ {
 		skipCount := rand.Intn(5) + 1
-		for j := 1; j <= 20; j += skipCount {
+		for j := 1; j <= 25; j += skipCount {
 			db.Create(&UserGame{
 				UserID:    uint(i),
 				GameID:    uint(j),

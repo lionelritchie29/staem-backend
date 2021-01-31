@@ -31,7 +31,7 @@ func init() {
 }
 
 func (p *GameItem) seed(db *gorm.DB) {
-	for i:=1; i<=20; i++ {
+	for i:=1; i<=25; i++ {
 		for j:=1; j<=10; j ++ {
 			db.Create(&GameItem{
 				Name:      faker.App().Name(),

@@ -30,7 +30,7 @@ func init() {
 func (p *GamePlaytime) seed(db *gorm.DB) {
 
 	startDate := time.Date(2020, time.November, 1, 0, 0, 0, 0, time.UTC)
-	for i:=1; i<=20; i++ {
+	for i:=1; i<=25; i++ {
 		randomCount := rand.Intn(30) + 1;
 		for j:=1; j<= randomCount; j++ {
 			randDate := faker.Date().Between(startDate, time.Now())

@@ -3,6 +3,7 @@ package models
 import (
 	"github.com/jinzhu/gorm"
 	"github.com/lionelritchie29/staem-backend/database"
+	"strconv"
 	"time"
 )
 
@@ -879,4 +880,24 @@ func (p *GameImage) seed(db *gorm.DB) {
 		UpdatedAt: time.Time{},
 		DeletedAt: nil,
 	})
+
+	for i:=21; i<=25; i++ {
+		db.Create(&GameImage{
+			GameID:    uint(i),
+			Url:       "header.jpg",
+			CreatedAt: time.Time{},
+			UpdatedAt: time.Time{},
+			DeletedAt: nil,
+		})
+
+		for j:=1; j<=5; j++ {
+			db.Create(&GameImage{
+				GameID:    uint(i),
+				Url:       strconv.FormatInt(int64(j), 10) + ".jpg",
+				CreatedAt: time.Time{},
+				UpdatedAt: time.Time{},
+				DeletedAt: nil,
+			})
+		}
+	}
 }

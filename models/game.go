@@ -269,6 +269,66 @@ func (p *Game) seed(db *gorm.DB) {
 		UpdatedAt:   time.Time{},
 		DeletedAt:   nil,
 	})
+
+	db.Create(&Game{
+		Publisher:   7,
+		Developer:   7,
+		Title:       "Assassin's Creed® Unity",
+		Description: "Assassin’s Creed® Unity tells the story of Arno, a young man who embarks upon an extraordinary journey to expose the true powers behind the French Revolution. In the brand new co-op mode, you and your friends will also be thrown in the middle of a ruthless struggle for the fate of a nation.",
+		Price:       399000,
+		ReleaseDate: "2014-11-23",
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&Game{
+		Publisher:   3,
+		Developer:   4,
+		Title:       "Green Hell",
+		Description: "Green Hell is a sweltering struggle for survival in the Amazonian rainforest. Clinging to life, the player is set on a journey of durability as the effects of solitude wear heavy not only on the body but also the mind. How long can you survive against the dangers of the unknown?",
+		Price:       119999,
+		ReleaseDate: "2019-09-05",
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&Game{
+		Publisher:   2,
+		Developer:   5,
+		Title:       "Ori and the Will of the Wisps",
+		Description: "Play the critically acclaimed masterpiece. Embark on a new journey in a vast, exotic world where you’ll encounter towering enemies and challenging puzzles on your quest to unravel Ori’s destiny.",
+		Price:       149999,
+		ReleaseDate: "2020-03-11",
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&Game{
+		Publisher:   1,
+		Developer:   2,
+		Title:       "Pumpkin Jack",
+		Description: "Pumpkin Jack is a Spooky Scary 3D platformer in which you embody Jack, the Mythical Pumpkin Lord! Dive into an Epic Adventure through otherworldly landscapes and help the Evil annihilate the Good!",
+		Price:       139999,
+		ReleaseDate: "2020-10-23",
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
+
+	db.Create(&Game{
+		Publisher:   4,
+		Developer:   6,
+		Title:       "RedEx",
+		Description: "RedEx is a 2D shooter with Tower Defence mechanics, with a minimalist pixel art stile. You are to fight against mercenaries of underground smuggling organization which pretends to be a logistic corporation called RedExpress.",
+		Price:       39999,
+		ReleaseDate: "2020-11-26",
+		CreatedAt:   time.Time{},
+		UpdatedAt:   time.Time{},
+		DeletedAt:   nil,
+	})
 }
 
 

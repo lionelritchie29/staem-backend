@@ -295,6 +295,52 @@ func GetRoot() *graphql.Object{
 				Resolve: res.LoginResolver,
 			},
 
+			//
+			"avatarFrameById": &graphql.Field{
+				Type: graphql.NewList(typ.GetAvatarFrameType()),
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.GetAvatarFrameByUserId,
+			},
+			"profileBackgroundById": &graphql.Field{
+				Type: graphql.NewList(typ.GetProfileBackgroundType()),
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.GetProfileBackgroundByUserId,
+			},
+			"miniProfileBackgroundById": &graphql.Field{
+				Type: graphql.NewList(typ.GetMiniProfileBackgroundType()),
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.GetMiniProfileBackgroundByUserId,
+			},
+			"animatedAvatarById": &graphql.Field{
+				Type: graphql.NewList(typ.GetAnimatedAvatarFrameType()),
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.GetAnimatedAvatarByUserId,
+			},
+			"chatStickerById": &graphql.Field{
+				Type: graphql.NewList(typ.GetChatStickerType()),
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.GetChatStickerByUserId,
+			},
 			"avatarFrames": &graphql.Field{
 				Type: graphql.NewList(typ.GetAvatarFrameType()),
 				Resolve: res.GetAvatarFrames,
