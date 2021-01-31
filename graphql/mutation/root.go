@@ -405,6 +405,30 @@ func GetRoot() *graphql.Object {
 				},
 				Resolve: res.CreateMiniProfileTransaction,
 			},
+			"createChatStickerTransaction": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"itemId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.CreateChatStickerTransaction,
+			},
+			"createAnimatedAvatarTransaction": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"itemId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.CreateAnimatedAvatarTransaction,
+			},
 
 			"createOTP": &graphql.Field{
 				Type: graphql.Boolean,
@@ -459,6 +483,24 @@ func GetRoot() *graphql.Object {
 					},
 				},
 				Resolve: res.CreateSellListing,
+			},
+			"createBuyListing": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"gameItemId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"price": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"quantity": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.CreateBuyListing,
 			},
 		},
 	})

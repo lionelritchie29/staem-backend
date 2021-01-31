@@ -37,7 +37,7 @@ func (p *UserGame) seed(db *gorm.DB) {
 				DeletedAt: nil,
 			})
 
-			skipCount2 := rand.Intn(2) + 1
+			skipCount2 := rand.Intn(3) + 1
 			for k := 1; k <= 10; k += skipCount2 {
 				db.Create(&UserGameItem{
 					UserID:     uint(i),

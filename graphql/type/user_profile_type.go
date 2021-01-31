@@ -3,7 +3,9 @@ package _type
 import (
 	"github.com/graphql-go/graphql"
 	"github.com/lionelritchie29/staem-backend/models"
+	"github.com/lionelritchie29/staem-backend/models/animated_avatar"
 	"github.com/lionelritchie29/staem-backend/models/avatar_frame"
+	"github.com/lionelritchie29/staem-backend/models/chat_sticker"
 	"github.com/lionelritchie29/staem-backend/models/mini_profile"
 	"github.com/lionelritchie29/staem-backend/models/profile_background"
 )
@@ -76,6 +78,22 @@ func GetUserProfileType() *graphql.Object {
 						parent := p.Source.(models.UserProfile)
 						bg := mini_profile.GetByUserId(int(parent.ID))
 						return bg, nil
+					},
+				},
+				"animatedAvatars": &graphql.Field{
+					Type: graphql.NewList(GetAnimatedAvatarFrameType()),
+					Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+						parent := p.Source.(models.UserProfile)
+						avatars := animated_avatar.GetByUserId(int(parent.ID))
+						return avatars, nil
+					},
+				},
+				"chatStickers": &graphql.Field{
+					Type: graphql.NewList(GetChatStickerType()),
+					Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+						parent := p.Source.(models.UserProfile)
+						stickers := chat_sticker.GetByUserId(int(parent.ID))
+						return stickers, nil
 					},
 				},
 			},

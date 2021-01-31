@@ -22,7 +22,15 @@ func GetRoot() *graphql.Object{
 				},
 				Resolve: res.GetLatestChat,
 			},
-
+			"marketRecentActivity": &graphql.Field{
+				Type: graphql.NewList(typ.GetMarketRecentActivityType()),
+				Args: graphql.FieldConfigArgument{
+					"gameItemId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.GetMarketRecentActivites,
+			},
 		},
 	})
 }

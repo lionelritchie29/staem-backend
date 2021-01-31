@@ -2,6 +2,7 @@ package resolver
 
 import (
 	"github.com/graphql-go/graphql"
+	"github.com/lionelritchie29/staem-backend/helpers"
 	"github.com/lionelritchie29/staem-backend/models/market_transaction"
 )
 
@@ -58,7 +59,25 @@ func CreateSellListing(p graphql.ResolveParams) (interface{}, error) {
 	gameItemId := p.Args["gameItemId"].(int)
 	price := p.Args["price"].(int)
 	quantity := p.Args["quantity"].(int)
-
 	isSuccess := market_transaction.CreateSellListing(userId, gameItemId, price, quantity)
+
+	helpers.Broadcast()
 	return isSuccess, nil
+}
+
+func CreateBuyListing(p graphql.ResolveParams) (interface{}, error) {
+	userId := p.Args["userId"].(int)
+	gameItemId := p.Args["gameItemId"].(int)
+	price := p.Args["price"].(int)
+	quantity := p.Args["quantity"].(int)
+
+	isSuccess := market_transaction.CreateBuyListing(userId, gameItemId, price, quantity)
+	helpers.Broadcast()
+	return isSuccess, nil
+}
+
+func GetMarketRecentActivites(p graphql.ResolveParams) (interface{}, error) {
+	gameId := p.Args["gameItemId"].(int)
+	activites := market_transaction.GetLatestRecentActvities(gameId)
+	return activites, nil
 }
