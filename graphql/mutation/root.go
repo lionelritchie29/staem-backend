@@ -536,6 +536,21 @@ func GetRoot() *graphql.Object {
 				},
 				Resolve: res.AddImageVideoDislike,
 			},
+			"addReviewComment": &graphql.Field{
+				Type: typ.GetReviewCommentType(),
+				Args: graphql.FieldConfigArgument{
+					"postId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"comment": &graphql.ArgumentConfig{
+						Type: graphql.String,
+					},
+				},
+				Resolve: res.CreateReviewComment,
+			},
 		},
 	})
 }

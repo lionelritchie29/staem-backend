@@ -55,3 +55,11 @@ func GetAllGameReviews(p graphql.ResolveParams) (i interface{}, e error){
 	reviews := game_review.GetAll()
 	return reviews, nil
 }
+
+func CreateReviewComment(p graphql.ResolveParams) (i interface{}, e error){
+	userId := p.Args["userId"].(int)
+	postId := p.Args["postId"].(int)
+	comment := p.Args["comment"].(string)
+	commentCreated := game_review.CreateComment(postId, userId, comment)
+	return commentCreated, nil
+}

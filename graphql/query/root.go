@@ -508,6 +508,15 @@ func GetRoot() *graphql.Object{
 				},
 				Resolve: res.GetImageVideoPostById,
 			},
+			"gameDiscussionByPostId": &graphql.Field{
+				Type: typ.GetGameDiscussionType(),
+				Args: graphql.FieldConfigArgument{
+					"postId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.GetGameDiscussionById,
+			},
 		},
 	})
 }

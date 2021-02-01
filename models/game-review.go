@@ -35,7 +35,7 @@ func init() {
 
 func (p *GameReview) seed(db *gorm.DB) {
 
-	for i := 0; i < 200; i++ {
+	for i := 0; i < 150; i++ {
 		startDate := time.Date(2020, time.December, 17, 12, 0, 0, 0, time.UTC)
 		booleanRandom :=  rand.Intn(10) + 1
 		var isRecommended bool

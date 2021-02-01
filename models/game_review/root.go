@@ -112,3 +112,23 @@ func GetComments(reviewId int) []models.ReviewComment {
 	db.Where("post_id = ?", reviewId).Find(&comments, reviewId)
 	return comments
 }
+
+func CreateComment(reviewId, userId int, comment string) models.ReviewComment{
+	db := database.GetInstance()
+	reviewComment := models.ReviewComment{
+		PostID:    uint(reviewId),
+		UserID:    uint(userId),
+		Comments:  comment,
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: nil,
+	}
+
+	res := db.Create(&reviewComment)
+
+	if res.Error != nil {
+		return models.ReviewComment{}
+	}
+
+	return reviewComment
+}

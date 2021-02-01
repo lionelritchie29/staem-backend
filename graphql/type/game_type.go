@@ -5,6 +5,7 @@ import (
 	"github.com/lionelritchie29/staem-backend/models"
 	"github.com/lionelritchie29/staem-backend/models/developer"
 	"github.com/lionelritchie29/staem-backend/models/game"
+	"github.com/lionelritchie29/staem-backend/models/game_discussion"
 	"github.com/lionelritchie29/staem-backend/models/game_review"
 	"github.com/lionelritchie29/staem-backend/models/game_sale"
 	"github.com/lionelritchie29/staem-backend/models/publisher"
@@ -94,6 +95,14 @@ func GetGameType() *graphql.Object {
 						gameP := params.Source.(models.Game)
 						systemReq := game.GetSystemRequirements(int(gameP.ID))
 						return systemReq, nil
+					},
+				},
+				"topThreeDiscussions": &graphql.Field{
+					Type: graphql.NewList(GetGameDiscussionType()),
+					Resolve: func(params graphql.ResolveParams) (interface{}, error) {
+						gameP := params.Source.(models.Game)
+						posts := game_discussion.GetTopThreeByGameId(int(gameP.ID))
+						return posts, nil
 					},
 				},
 			},
