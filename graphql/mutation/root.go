@@ -551,6 +551,39 @@ func GetRoot() *graphql.Object {
 				},
 				Resolve: res.CreateReviewComment,
 			},
+			"createGameDiscussionComment": &graphql.Field{
+				Type: typ.GetDiscussionCommentType(),
+				Args: graphql.FieldConfigArgument{
+					"postId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"content": &graphql.ArgumentConfig{
+						Type: graphql.String,
+					},
+				},
+				Resolve: res.CreateGameDiscussionComment,
+			},
+			"createNewGameDiscussion": &graphql.Field{
+				Type: graphql.Int,
+				Args: graphql.FieldConfigArgument{
+					"gameId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"title": &graphql.ArgumentConfig{
+						Type: graphql.String,
+					},
+					"content": &graphql.ArgumentConfig{
+						Type: graphql.String,
+					},
+				},
+				Resolve: res.CreateNewGameDiscussion,
+			},
 		},
 	})
 }
