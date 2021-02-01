@@ -21,6 +21,5 @@ func AddTransaction(p graphql.ResolveParams) (interface{}, error) {
 		return false, nil
 	}
 
-	//helpers.SendEmail("Lionel", "brandon.julio.t@icloud.com", "test123123")
 	return true, nil
 }

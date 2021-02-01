@@ -9,6 +9,26 @@ import (
 	"time"
 )
 
+func GetCount() int {
+	db := database.GetInstance()
+	var count int
+	db.Model(&models.UserAccount{}).Count(&count)
+	return count
+}
+
+func GetAllLimitOffset(limit, offset int) models.UserPaginate{
+	db := database.GetInstance()
+	var users []models.UserAccount
+	db.Limit(limit).Offset(offset).Find(&users)
+
+	userPaginate := models.UserPaginate{
+		TotalCount: GetCount(),
+		Users: users,
+	}
+
+	return userPaginate
+}
+
 func GetAll() []models.UserAccount{
 	db := database.GetInstance()
 	var users []models.UserAccount

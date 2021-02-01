@@ -58,6 +58,7 @@ func AddTransaction(newTransaction input_models.NewGameTransaction) bool {
 	var theUser models.UserAccount
 	db.Find(&theUser, newTransaction.User)
 
+	totalPrice := 0
 	for _, detail := range newTransaction.Details {
 		resDetail := db.Create(&models.GameTransactionDetail{
 			GameTransactionID: header.ID,
@@ -69,6 +70,7 @@ func AddTransaction(newTransaction input_models.NewGameTransaction) bool {
 			DeletedAt:         nil,
 		})
 
+		totalPrice = totalPrice + detail.Price
 		theUser.WalletAmount = theUser.WalletAmount - detail.Price
 
 		createUserGame := db.Create(&models.UserGame{
@@ -79,16 +81,20 @@ func AddTransaction(newTransaction input_models.NewGameTransaction) bool {
 			DeletedAt: nil,
 		})
 
-		db.Save(&theUser)
-
-
 		if resDetail.Error != nil || createUserGame.Error != nil {
 			fmt.Println(resDetail.Error)
 			return false
 		}
 	}
 
+	//every rp 15.000 spent, got 100 point
+	var theUserProfile models.UserProfile
+	db.Find(&theUserProfile, newTransaction.User)
+	pointsMultiplier := int(totalPrice / 15000)
+	theUserProfile.Point = theUserProfile.Point + (100 * pointsMultiplier)
 
+	db.Save(&theUserProfile)
+	db.Save(&theUser)
 
 	return true
 }

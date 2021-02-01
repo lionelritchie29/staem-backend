@@ -14,9 +14,16 @@ import (
 
 func GetCount() int {
 	db := database.GetInstance()
-	var games []models.Game
-	res := db.Find(&games)
-	return int(res.RowsAffected)
+	var count int
+	db.Model(&models.Game{}).Count(&count)
+	return count
+}
+
+func GetSaleCount() int {
+	db := database.GetInstance()
+	var count int
+	db.Model(&models.Game{}).Joins("LEFT JOIN game_sales ON game_sales.game_id = games.id").Where("game_sales.game_id = games.id").Count(&count)
+	return count
 }
 
 func GetAll() []models.Game {
@@ -154,6 +161,15 @@ func GetGameOnSale() []models.Game {
 	var gamesOnSale []models.Game
 
 	db.Model(&models.Game{}).Joins("LEFT JOIN game_sales ON game_sales.game_id = games.id").Where("game_sales.game_id = games.id").Scan(&gamesOnSale)
+
+	return gamesOnSale
+}
+
+func GetGameOnSaleLimitOffset(limit, offset int) []models.Game {
+	db := database.GetInstance()
+	var gamesOnSale []models.Game
+
+	db.Model(&models.Game{}).Joins("LEFT JOIN game_sales ON game_sales.game_id = games.id").Where("game_sales.game_id = games.id").Limit(limit).Offset(offset).Scan(&gamesOnSale)
 
 	return gamesOnSale
 }

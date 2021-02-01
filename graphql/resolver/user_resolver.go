@@ -20,6 +20,14 @@ func GetUser(p graphql.ResolveParams) (i interface{}, e error){
 	return user, nil
 }
 
+func GetUserLimitOffset(p graphql.ResolveParams) (i interface{}, e error){
+	limit := p.Args["limit"].(int)
+	offset := p.Args["offset"].(int)
+	userPaginate := user.GetAllLimitOffset(limit, offset)
+
+	return userPaginate, nil
+}
+
 func GetUserByCode(p graphql.ResolveParams) (i interface{}, e error){
 	code := p.Args["code"].(string)
 	user := user.GetByCode(code)

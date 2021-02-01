@@ -28,6 +28,21 @@ func GetGamesLimitOffset(p graphql.ResolveParams) (i interface{}, e error) {
 	return gamePaginate, nil
 }
 
+func GetGamePromoLimitOffset(p graphql.ResolveParams) (i interface{}, e error) {
+	limit := p.Args["limit"].(int)
+	offset := p.Args["offset"].(int)
+
+	games := game.GetGameOnSaleLimitOffset(limit, offset)
+	totalCount := game.GetSaleCount()
+
+	gamePaginate := models.GamePaginate{
+		TotalCount: totalCount,
+		Games:      games,
+	}
+
+	return gamePaginate, nil
+}
+
 func GetGamesByTitleLimitOffset(p graphql.ResolveParams) (i interface{}, e error) {
 	searchQuery := p.Args["query"].(string)
 	limit := p.Args["limit"].(int)

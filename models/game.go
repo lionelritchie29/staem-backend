@@ -240,7 +240,7 @@ func (p *Game) seed(db *gorm.DB) {
 		Title:       "Ostrich Runner",
 		Description: "Ostrich Runner – is the fascinating animated arcade racing where the main heroes are funny and a little bit crazy ostriches.",
 		Price:       52999,
-		ReleaseDate: "2005-02-30",
+		ReleaseDate: "2005-02-25",
 		CreatedAt:   time.Time{},
 		UpdatedAt:   time.Time{},
 		DeletedAt:   nil,

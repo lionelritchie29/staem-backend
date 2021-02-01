@@ -67,6 +67,18 @@ func GetRoot() *graphql.Object{
 				},
 				Resolve: res.GetGamesLimitOffset,
 			},
+			"gamePromoLimitOffset": &graphql.Field{
+				Type: typ.GetGamePaginateType(),
+				Args: graphql.FieldConfigArgument{
+					"limit": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"offset": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.GetGamePromoLimitOffset,
+			},
 			"gamesByTitlelimitOffset": &graphql.Field{
 				Type: graphql.NewList(typ.GetGameType()),
 				Args: graphql.FieldConfigArgument{
@@ -181,6 +193,18 @@ func GetRoot() *graphql.Object{
 			"users": &graphql.Field{
 				Type: graphql.NewList(typ.GetUserType()),
 				Resolve: res.GetUsers,
+			},
+			"usersLimitOffset": &graphql.Field{
+				Type: typ.GetUserPaginateType(),
+				Args: graphql.FieldConfigArgument{
+					"limit": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"offset": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.GetUserLimitOffset,
 			},
 			"user": &graphql.Field{
 				Type: typ.GetUserType(),
