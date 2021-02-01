@@ -3,6 +3,7 @@ package _type
 import (
 	"github.com/graphql-go/graphql"
 	"github.com/lionelritchie29/staem-backend/models"
+	"github.com/lionelritchie29/staem-backend/models/game_review"
 	"github.com/lionelritchie29/staem-backend/models/user"
 )
 
@@ -44,6 +45,14 @@ func GetGameReviewType() *graphql.Object {
 				},
 				"reviewDateTime": &graphql.Field{
 					Type: graphql.DateTime,
+				},
+				"comments": &graphql.Field{
+					Type: graphql.NewList(GetReviewCommentType()),
+					Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+						parent := p.Source.(models.GameReview)
+						comments := game_review.GetComments(int(parent.ID))
+						return comments, nil
+					},
 				},
 			},
 		})

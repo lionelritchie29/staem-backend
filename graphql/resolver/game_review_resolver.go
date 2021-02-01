@@ -11,6 +11,12 @@ func GetGameReviewByGameId(p graphql.ResolveParams) (i interface{}, e error){
 	return reviews, nil
 }
 
+func GetGameReviewById(p graphql.ResolveParams) (i interface{}, e error){
+	id := p.Args["gameId"].(int)
+	review := game_review.GetById(id)
+	return review, nil
+}
+
 func GetPastMonthGameReviewById(p graphql.ResolveParams) (i interface{}, e error){
 	id := p.Args["gameId"].(int)
 	reviews := game_review.GetHelpfulReviewByGameId(id)
@@ -45,3 +51,7 @@ func IncreaseReviewDownvoteCount(p graphql.ResolveParams) (i interface{}, e erro
 	return isSuccess, nil
 }
 
+func GetAllGameReviews(p graphql.ResolveParams) (i interface{}, e error){
+	reviews := game_review.GetAll()
+	return reviews, nil
+}

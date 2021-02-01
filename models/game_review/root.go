@@ -16,6 +16,13 @@ func GetByGameId(gameId int) []models.GameReview {
 	return reviews
 }
 
+func GetById(gameId int) models.GameReview {
+	db := database.GetInstance()
+	var review models.GameReview
+	db.Find(&review, gameId)
+	return review
+}
+
 func GetHelpfulReviewByGameId(gameId int) []models.GameReview {
 	db := database.GetInstance()
 	var reviews []models.GameReview
@@ -37,6 +44,14 @@ func GetRecentlyPostedbyGameId(gameId int) []models.GameReview {
 		Scan(&reviews)
 	return reviews
 }
+
+func GetAll() []models.GameReview{
+	db := database.GetInstance()
+	var reviews []models.GameReview
+	db.Limit(20).Find(&reviews)
+	return reviews
+}
+
 
 func Create(userId, gameId int, content string, isRecommended bool) bool {
 	db := database.GetInstance()
@@ -89,5 +104,11 @@ func IncreaseDownvoteCount(id int) bool{
 	}
 
 	return true
+}
 
+func GetComments(reviewId int) []models.ReviewComment {
+	db := database.GetInstance()
+	var comments []models.ReviewComment
+	db.Where("post_id = ?", reviewId).Find(&comments, reviewId)
+	return comments
 }

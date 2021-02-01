@@ -155,7 +155,20 @@ func GetRoot() *graphql.Object{
 			},
 
 			//Game Review
+			"gameReviews": &graphql.Field{
+				Type: graphql.NewList(typ.GetGameReviewType()),
+				Resolve: res.GetAllGameReviews,
+			},
 			"gameReviewById": &graphql.Field{
+				Type: typ.GetGameReviewType(),
+				Args: graphql.FieldConfigArgument{
+					"gameId" : &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.GetGameReviewById,
+			},
+			"gameReviewsById": &graphql.Field{
 				Type: graphql.NewList(typ.GetGameReviewType()),
 				Args: graphql.FieldConfigArgument{
 					"gameId" : &graphql.ArgumentConfig{
@@ -485,6 +498,15 @@ func GetRoot() *graphql.Object{
 			"imageVideoPosts": &graphql.Field{
 				Type: graphql.NewList(typ.GetImageVideoPostType()),
 				Resolve: res.GetImageVideoPosts,
+			},
+			"imageVideoPostById": &graphql.Field{
+				Type: typ.GetImageVideoPostType(),
+				Args: graphql.FieldConfigArgument{
+					"id": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.GetImageVideoPostById,
 			},
 		},
 	})

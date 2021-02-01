@@ -502,6 +502,40 @@ func GetRoot() *graphql.Object {
 				},
 				Resolve: res.CreateBuyListing,
 			},
+
+			"createPostComment": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"userId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"postId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+					"comment": &graphql.ArgumentConfig{
+						Type: graphql.String,
+					},
+				},
+				Resolve: res.AddImageVideoComment,
+			},
+			"addImageVideoLike": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"postId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.AddImageVideoLike,
+			},
+			"addImageVideoDislike": &graphql.Field{
+				Type: graphql.Boolean,
+				Args: graphql.FieldConfigArgument{
+					"postId": &graphql.ArgumentConfig{
+						Type: graphql.Int,
+					},
+				},
+				Resolve: res.AddImageVideoDislike,
+			},
 		},
 	})
 }

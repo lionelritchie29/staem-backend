@@ -6,12 +6,12 @@ import (
 	"github.com/lionelritchie29/staem-backend/models/user"
 )
 
-var postCommentType *graphql.Object
+var reviewCommentType *graphql.Object
 
-func GetPostCommentType() *graphql.Object {
-	if postCommentType == nil {
-		postCommentType =  graphql.NewObject(graphql.ObjectConfig{
-			Name: "postComment",
+func GetReviewCommentType() *graphql.Object {
+	if reviewCommentType == nil {
+		reviewCommentType =  graphql.NewObject(graphql.ObjectConfig{
+			Name: "reviewComment",
 			Fields: graphql.Fields{
 				"postId": {
 					Type: graphql.Int,
@@ -19,7 +19,7 @@ func GetPostCommentType() *graphql.Object {
 				"user": &graphql.Field{
 					Type: GetUserType(),
 					Resolve: func(p graphql.ResolveParams) (interface{}, error) {
-						parent := p.Source.(models.ImageVideoComment)
+						parent := p.Source.(models.ReviewComment)
 						userP := user.Get(int(parent.UserID))
 						return userP, nil
 					},
@@ -34,5 +34,5 @@ func GetPostCommentType() *graphql.Object {
 		})
 	}
 
-	return postCommentType
+	return reviewCommentType
 }

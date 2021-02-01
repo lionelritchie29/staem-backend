@@ -2,6 +2,9 @@ package _type
 
 import (
 	"github.com/graphql-go/graphql"
+	"github.com/lionelritchie29/staem-backend/models"
+	image_video_post "github.com/lionelritchie29/staem-backend/models/image-video-post"
+	"github.com/lionelritchie29/staem-backend/models/user"
 )
 
 var imageVideoPostType *graphql.Object
@@ -29,11 +32,24 @@ func GetImageVideoPostType() *graphql.Object {
 				"dislikeCount": {
 					Type: graphql.Int,
 				},
-				"userId": {
-					Type: graphql.Int,
+				"user": {
+					Type: GetUserType(),
+					Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+						parent := p.Source.(models.ImageVideoPost)
+						userP := user.Get(int(parent.UserID))
+						return userP, nil
+					},
 				},
 				"createdAt": {
 					Type: graphql.String,
+				},
+				"comments": {
+					Type: graphql.NewList(GetPostCommentType()),
+					Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+						parent := p.Source.(models.ImageVideoPost)
+						comments := image_video_post.GetComments(int(parent.ID))
+						return comments, nil
+					},
 				},
 			},
 		})
