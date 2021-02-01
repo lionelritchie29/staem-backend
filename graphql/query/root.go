@@ -481,6 +481,11 @@ func GetRoot() *graphql.Object{
 				},
 				Resolve: res.GetGameItemById,
 			},
+
+			"imageVideoPosts": &graphql.Field{
+				Type: graphql.NewList(typ.GetImageVideoPostType()),
+				Resolve: res.GetImageVideoPosts,
+			},
 		},
 	})
 }
