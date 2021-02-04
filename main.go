@@ -73,5 +73,5 @@ func main() {
 	router.Handle("/api", wrapped)
 	router.Handle("/subscriptions", websocketHandler)
 
-	log.Fatalln(http.ListenAndServe(os.Getenv("PORT"), router))
+	log.Fatalln(http.ListenAndServe(":" + os.Getenv("PORT"), router))
 }
