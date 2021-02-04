@@ -21,10 +21,8 @@ func connect()(*gorm.DB, error){
 	if dbUrl == "" {
 		return gorm.Open("postgres","host="+DB_HOST+" port="+DB_PORT+" user="+DB_USER+" dbname="+DB_NAME+" password="+DB_PASS+" sslmode=disable")
 	} else {
-		return gorm.Open(dbUrl)
+		return gorm.Open("postgres" , dbUrl)
 	}
-
-
 }
 
 func GetInstance() (*gorm.DB) {
