@@ -11,7 +11,7 @@ const DB_NAME="staem"
 const DB_HOST="127.0.0.1"
 const DB_PORT="5432"				//port on installation
 const DB_USER="postgres"			//default is postgres
-const DB_PASS="darrowred29"	//password on installation
+const DB_PASS=""	//password on installation
 
 var DB *gorm.DB
 
